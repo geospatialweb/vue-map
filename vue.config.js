@@ -1,6 +1,7 @@
 'use strict';
 
 module.exports = {
+    productionTip: false,
     devServer: {
         proxy: {
             '/data': {
