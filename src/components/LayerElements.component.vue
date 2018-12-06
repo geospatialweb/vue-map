@@ -1,6 +1,6 @@
 <template>
 	<li>
-		<div :class='[layer.class, {active: layer.active}]' @click='selectLayer'>{{ layer.name }}</div>
+		<div :class='[el.class, {active: el.active}]' @click='selectLayer'>{{ el.name }}</div>
 	</li>
 </template>
 
@@ -10,7 +10,7 @@
 
 	export default {
 		name: 'LayerElements',
-		props: ['layer'],
+		props: ['el'],
 		methods: {
 			selectLayer: event =>
 			{

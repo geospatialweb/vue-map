@@ -1,10 +1,10 @@
 <template>
-	<section class='mapContainer'>
+	<div class='mapContainer'>
 		<div :id='canvas.container'></div>
 		<Splash />
 		<Layers />
 		<Trails />
-	</section>
+	</div>
 </template>
 
 <script>
@@ -29,7 +29,7 @@
 </script>
 
 <style lang='scss' scoped>
-	section.mapContainer,
+	div.mapContainer,
 	div#canvas {
     	position: absolute;
     	height: 100%;

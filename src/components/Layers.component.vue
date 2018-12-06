@@ -1,7 +1,7 @@
 <template>
 	<div>
 		<ul class='layers'>
-			<LayerElements v-for='layer in layers' :key='layer.class' :layer='layer' @click='selectLayer' />
+			<LayerElements v-for='layer in layers' :key='layer.class' :el='layer' @click='selectLayer' />
 		</ul>
 
 		<LayerIcons v-for='icon in icons' :key='icon.class' :icon='icon' @click='selectLayer' />
