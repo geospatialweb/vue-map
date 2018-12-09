@@ -19,7 +19,7 @@ export default {
 			const i = layersStore.state.layers.findIndex(event => event.class === layer);
 
 			layersStore.setLayerActive(i);
-			layersService.setLayer(layersStore.state.layers[i].class, i);
+			layersService.setLayer(layer, i);
 		},
 	},
 };
