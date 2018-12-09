@@ -1,10 +1,8 @@
-'use strict';
-
 export const layers = [
 	{
 		active: false,
-		class: 'terrain',
-		name: 'Terrain View'
+		class: 'aerial',
+		name: 'Aerial View',
 	},
 	{
 		active: true,
@@ -13,7 +11,7 @@ export const layers = [
 		name: 'Biosphere',
 		src: '../assets/biosphere.png',
 		height: '18',
-		width: '18'
+		width: '18',
 	},
 	{
 		active: false,
@@ -22,7 +20,7 @@ export const layers = [
 		name: 'Office',
 		src: '../assets/office.png',
 		height: '20',
-		width: '18'
+		width: '18',
 	},
 	{
 		active: false,
@@ -31,7 +29,7 @@ export const layers = [
 		name: 'Places',
 		src: '../assets/places.png',
 		height: '20',
-		width: '18'
+		width: '18',
 	},
 	{
 		active: false,
@@ -40,10 +38,10 @@ export const layers = [
 		name: 'Trails',
 		src: '../assets/trails.png',
 		height: '20',
-		width: '18'
+		width: '18',
 	},
 	{
 		class: 'reset',
-		name: 'Reset Map'
-	}
-]
+		name: 'Reset Map',
+	},
+];

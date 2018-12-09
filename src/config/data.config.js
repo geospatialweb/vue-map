@@ -1,5 +1,3 @@
-'use strict';
-
 export const data = {
-	route: '/data'
+	route: '/data',
 };

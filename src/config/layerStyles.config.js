@@ -1,5 +1,3 @@
-'use strict';
-
 export const layerStyles = {
 	biosphere: {
 		name: 'biosphere',
@@ -8,17 +6,17 @@ export const layerStyles = {
 			id: 'biosphere',
 			type: 'fill',
 			source: {
-				type: 'geojson'
+				type: 'geojson',
 			},
 			layout: {
-				visibility: 'visible'
+				visibility: 'visible',
 			},
 			paint: {
-				'fill-color': '#090',
-				'fill-opacity': .3,
-				'fill-outline-color': '#000'
-			}
-		}
+				'fill-color': '#0c0',
+				'fill-opacity': 0.3,
+				'fill-outline-color': '#000',
+			},
+		},
 	},
 	trails: {
 		name: 'trails',
@@ -27,15 +25,15 @@ export const layerStyles = {
 			id: 'trails',
 			type: 'line',
 			source: {
-				type: 'geojson'
+				type: 'geojson',
 			},
 			layout: {
-				visibility: 'none'
+				visibility: 'none',
 			},
 			paint: {
-				'line-color': '#aa0000',
-				'line-width': 2
-			}
-		}
-	}
+				'line-color': '#900',
+				'line-width': 2,
+			},
+		},
+	},
 };

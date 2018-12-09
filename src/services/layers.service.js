@@ -1,38 +1,30 @@
-'use strict';
-
+import { layersStore } from '../stores/layers.store';
 import { layerStylesService } from './layerStyles.service';
 import { mapService } from './map.service';
 import { markerDisplayService } from './markerDisplay.service';
-import { layersStore } from '../stores/layers.store';
 
 export const layersService = {
-	setLayer(layer, index)
-	{
+	layersStore,
+
+	setLayer(layer, i) {
 		/* refresh app */
-		if (layer === 'reset')
-		{
+		if (layer === 'reset') {
 			window.location.reload(true);
-		}
-		else
-		{
-			const layers = layersStore.state.layers;
+		} else {
+			const { layers } = this.layersStore.state;
 
 			/* change between 'dark' and 'outdoors' map styles (basemaps) */
-			if (layer === 'terrain')
-			{
+			if (layer === 'aerial') {
 				mapService.changeMapStyle();
 
 				/* hide active markers when changing map styles for aesthetic purposes */
 				markerDisplayService.hideMarkers();
 
 				/* show active markers after changing map styles for aesthetic purposes */
-				setTimeout(() => markerDisplayService.showMarkers(), 1200);
-			}
+				setTimeout(() => markerDisplayService.showMarkers(), 1000);
 			/* set style layer visibility */
-			else if (layer === 'biosphere' || layer === 'trails')
-			{
-				if (layers[index].active)
-				{
+			} else if (layer === 'biosphere' || layer === 'trails') {
+				if (layers[i].active) {
 					layerStylesService.layerStyles[layerStylesService.layerStylesHash[layer]].layout.visibility = 'visible';
 					mapService.map.setLayoutProperty(layer, 'visibility', 'visible');
 
@@ -40,9 +32,7 @@ export const layersService = {
 					if (layer === 'trails') {
 						markerDisplayService.addMarkers(layer);
 					}
-				}
-				else
-				{
+				} else {
 					layerStylesService.layerStyles[layerStylesService.layerStylesHash[layer]].layout.visibility = 'none';
 					mapService.map.setLayoutProperty(layer, 'visibility', 'none');
 
@@ -51,14 +41,14 @@ export const layersService = {
 						markerDisplayService.removeMarkers(layer);
 					}
 				}
-			}
 			/* add or remove markers */
-			else if (layer === 'office' || layer === 'places')
-			{
-				layers[index].active ?
-					markerDisplayService.addMarkers(layer) :
+			} else if (layer === 'office' || layer === 'places') {
+				if (layers[i].active) {
+					markerDisplayService.addMarkers(layer);
+				} else {
 					markerDisplayService.removeMarkers(layer);
+				}
 			}
 		}
-	}
-}
+	},
+};

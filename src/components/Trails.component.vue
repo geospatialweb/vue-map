@@ -5,29 +5,29 @@
 </template>
 
 <script>
-	import { trails } from '../config/trails.config';
-	import { trailsService } from '../services/trails.service';
+import { trails } from '../config/trails.config';
+import { trailsService } from '../services/trails.service';
 
-	export default {
-		name: 'Trails',
-		data () {
-			return {
-				trails
-			}
-		},
-		methods: {
-			selectTrail: event => { trailsService.setTrail(event); }
-		}
-	}
+export default {
+	name: 'Trails',
+	data() {
+		return {
+			trails,
+		};
+	},
+	methods: {
+		selectTrail: event => trailsService.setTrail(event),
+	},
+};
 </script>
 
 <style lang='scss' scoped>
-	select.selectTrail {
-		position: absolute;
-		border-style: none;
-		font-family: 'Roboto', sans-serif;
-		left: 10px;
-		top: 310px;
-		width: 132px;
-	}
+select.selectTrail {
+	position: absolute;
+	border-style: none;
+	font-family: 'Roboto', sans-serif;
+	left: 10px;
+	top: 310px;
+	width: 132px;
+}
 </style>

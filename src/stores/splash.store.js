@@ -1,13 +1,11 @@
-'use strict';
-
 import { splash } from '../config/splash.config';
 
 export const splashStore = {
 	state: {
-		splash
+		splash,
 	},
 
-	setLayerActive(name) {
-		this.state.splash[name].active = !this.state.splash[name].active;
-	}
-}
+	setLayerActive() {
+		this.state.splash.splashElement.active = !this.state.splash.splashElement.active;
+	},
+};
