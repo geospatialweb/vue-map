@@ -14,66 +14,62 @@ export const dataService = {
 	/* HTTP request to obtain layer styles from back-end PostGIS server */
 	getLayerStyles() {
 		Object.keys(this.layerStyles).forEach((key) => {
-			if (key) {
-				const params = {
-					fields: this.layerStyles[key].fields,
-					table: this.layerStyles[key].name,
-				};
+			const params = {
+				fields: this.layerStyles[key].fields,
+				table: this.layerStyles[key].name,
+			};
 
-				const subscription = Axios.get(this.route, { params })
-					.subscribe((res) => {
-						if (res.data) {
-							const layerStyle = this.layerStyles[key].layer;
-							layerStyle.source.data = res.data;
+			const subscription = Axios.get(this.route, { params })
+				.subscribe((res) => {
+					if (res.data) {
+						const layerStyle = this.layerStyles[key].layer;
+						layerStyle.source.data = res.data;
 
-							layerStylesService.pushLayerStyle(layerStyle);
-							mapService.addLayerStyle(layerStyle);
-						} else {
-							console.error('Data Error:\n', res.data);
-						}
-					},
-					(err) => {
-						console.error('Query Failed:\n', err.error);
-					},
-					() => {
-						if (layerStylesService.layerStyles.length === Object.keys(this.layerStyles).length) {
-							layerStylesService.createLayerStylesHash();
-						}
+						layerStylesService.pushLayerStyle(layerStyle);
+						mapService.addLayerStyle(layerStyle);
+					} else {
+						console.error('Data Error:\n', res.data);
+					}
+				},
+				(err) => {
+					console.error('Query Failed:\n', err.error);
+				},
+				() => {
+					if (layerStylesService.layerStyles.length === Object.keys(this.layerStyles).length) {
+						layerStylesService.createLayerStylesHash();
+					}
 
-						subscription.unsubscribe();
-					});
-			}
+					subscription.unsubscribe();
+				});
 		});
 	},
 
 	/* HTTP request to obtain markers from back-end PostGIS server */
 	getMarkers() {
 		Object.keys(this.markers).forEach((key) => {
-			if (key) {
-				const params = {
-					fields: this.markers[key].fields,
-					table: this.markers[key].name,
-				};
+			const params = {
+				fields: this.markers[key].fields,
+				table: this.markers[key].name,
+			};
 
-				const subscription = Axios.get(this.route, { params })
-					.subscribe((res) => {
-						if (res.data) {
-							markersService.setMarkers(this.markers[key].name, res.data);
-						} else {
-							console.error('Data Error:\n', res.data);
-						}
-					},
-					(err) => {
-						console.error('Query Failed:\n', err.error);
-					},
-					() => {
-						if (markersService.markers.length === Object.keys(this.markers).length) {
-							markersService.createMarkersHash();
-						}
+			const subscription = Axios.get(this.route, { params })
+				.subscribe((res) => {
+					if (res.data) {
+						markersService.setMarkers(this.markers[key].name, res.data);
+					} else {
+						console.error('Data Error:\n', res.data);
+					}
+				},
+				(err) => {
+					console.error('Query Failed:\n', err.error);
+				},
+				() => {
+					if (markersService.markers.length === Object.keys(this.markers).length) {
+						markersService.createMarkersHash();
+					}
 
-						subscription.unsubscribe();
-					});
-			}
+					subscription.unsubscribe();
+				});
 		});
 	},
 };
