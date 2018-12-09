@@ -55,8 +55,7 @@ export const dataService = {
 					table: this.markers[key].name,
 				};
 
-				const subscription = Axios
-					.get(this.route, { params })
+				const subscription = Axios.get(this.route, { params })
 					.subscribe((res) => {
 						if (res.data) {
 							markersService.setMarkers(this.markers[key].name, res.data);
