@@ -69,25 +69,22 @@ export const mapService = {
 
 		this.map.setStyle(this.mapStyle);
 
-		/* add hillshading to changed map style after 1 sec delay for aesthetic purposes */
+		/* add hillshading and layers to changed map style after 1 sec delay for map to load  */
 		setTimeout(() => {
 			if (this.mapStyle === this.mapStyles.default) {
 				this.map.addSource(this.hillshade.source, this.hillshade.layer);
 				this.addLayerStyle(this.hillshade, this.hillshade.index);
 			}
-		}, 1000);
 
-		/* add layers to changed map style after 1 sec delay for aesthetic purposes */
-		layerStylesService.layerStyles.map((layerStyle) => {
-			setTimeout(() => {
+			layerStylesService.layerStyles.map((layerStyle) => {
 				this.map.addLayer(layerStyle);
 
 				if (layerStyle.layout.visibility === 'visible') {
 					this.map.setLayoutProperty(layerStyle.id, 'visibility', 'visible');
 				}
-			}, 1000);
 
-			return true;
-		});
+				return true;
+			});
+		}, 1000);
 	},
 };
