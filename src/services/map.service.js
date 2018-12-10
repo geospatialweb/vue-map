@@ -19,11 +19,11 @@ export const mapService = {
 	mapControls,
 	mapOptions: {
 		container: canvas.container,
-		style: mapStyles.default,
+		style: mapStyles.outdoors,
 		center: canvas.center,
 		zoom: canvas.zoom,
 	},
-	mapStyle: mapStyles.default,
+	mapStyle: mapStyles.outdoors,
 	mapStyles,
 	markers,
 	splash,
@@ -60,18 +60,18 @@ export const mapService = {
 		this.map.addLayer(layerStyle, index);
 	},
 
-	changeMapStyle() {
-		if (this.mapStyle === this.mapStyles.default) {
+	setMapStyle() {
+		if (this.mapStyle === this.mapStyles.outdoors) {
 			this.mapStyle = this.mapStyles.satellite;
 		} else {
-			this.mapStyle = this.mapStyles.default;
+			this.mapStyle = this.mapStyles.outdoors;
 		}
 
 		this.map.setStyle(this.mapStyle);
 
-		/* add hillshading and layers to changed map style after 1 sec delay for map to load  */
+		/* add hillshading and layer styles to changed map style after 1 sec delay to load  */
 		setTimeout(() => {
-			if (this.mapStyle === this.mapStyles.default) {
+			if (this.mapStyle === this.mapStyles.outdoors) {
 				this.map.addSource(this.hillshade.source, this.hillshade.layer);
 				this.addLayerStyle(this.hillshade, this.hillshade.index);
 			}

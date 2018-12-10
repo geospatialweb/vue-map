@@ -31,8 +31,8 @@ export const markerDisplayService = {
 			if (marker.hidden) {
 				const name = marker[0].getElement().classList[0].replace('-marker', '');
 
-				marker.hidden = false;
 				this.addMarkers(name);
+				marker.hidden = false;
 			}
 
 			return true;
