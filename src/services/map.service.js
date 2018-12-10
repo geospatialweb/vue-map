@@ -1,5 +1,6 @@
 import mapboxgl from 'mapbox-gl';
 import { canvas } from '../config/canvas.config';
+import { hillshade } from '../config/hillshade.config';
 import { layerStyles } from '../config/layerStyles.config';
 import { mapControls } from '../config/mapControls.config';
 import { mapStyles } from '../config/mapStyles.config';
@@ -13,6 +14,7 @@ import { trailsService } from './trails.service';
 
 export const mapService = {
 	accessToken: canvas.accessToken,
+	hillshade,
 	layerStyles,
 	mapControls,
 	mapOptions: {
@@ -34,7 +36,7 @@ export const mapService = {
 
 		this.map = new mapboxgl.Map(this.mapOptions)
 			.addControl(new mapboxgl.NavigationControl(), this.mapControls.navigationControl.position)
-			/* once layers and markers loaded, hide splash screen */
+			/* once markers and layers loaded, hide splash screen */
 			.on('styledata', () => {
 				if (markersService.markers.length === Object.keys(this.markers).length
 						&& layerStylesService.layerStyles.length === Object.keys(this.layerStyles).length
@@ -43,6 +45,9 @@ export const mapService = {
 				}
 			})
 			.on('load', () => {
+				this.map.addSource(this.hillshade.source, this.hillshade.layer);
+				this.addLayerStyle(this.hillshade, this.hillshade.index);
+
 				splashElement = document.querySelector(`${this.splash.splashElement.selector}`);
 
 				dataService.getMarkers();
@@ -51,20 +56,28 @@ export const mapService = {
 			});
 	},
 
-	addLayerStyle(layerStyle) {
-		this.map.addLayer(layerStyle);
+	addLayerStyle(layerStyle, index) {
+		this.map.addLayer(layerStyle, index);
 	},
 
 	changeMapStyle() {
 		if (this.mapStyle === this.mapStyles.default) {
-			this.mapStyle = this.mapStyles.outdoors;
+			this.mapStyle = this.mapStyles.satellite;
 		} else {
 			this.mapStyle = this.mapStyles.default;
 		}
 
 		this.map.setStyle(this.mapStyle);
 
-		/* add layers to new map style after delay for aesthetic purposes */
+		/* add hillshading to changed map style after 1 sec delay for aesthetic purposes */
+		setTimeout(() => {
+			if (this.mapStyle === this.mapStyles.default) {
+				this.map.addSource(this.hillshade.source, this.hillshade.layer);
+				this.addLayerStyle(this.hillshade, this.hillshade.index);
+			}
+		}, 1000);
+
+		/* add layers to changed map style after 1 sec delay for aesthetic purposes */
 		layerStylesService.layerStyles.map((layerStyle) => {
 			setTimeout(() => {
 				this.map.addLayer(layerStyle);

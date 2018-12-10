@@ -12,7 +12,7 @@ export const layerStyles = {
 				visibility: 'visible',
 			},
 			paint: {
-				'fill-color': '#0c0',
+				'fill-color': '#090',
 				'fill-opacity': 0.3,
 				'fill-outline-color': '#000',
 			},

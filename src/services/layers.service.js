@@ -13,15 +13,15 @@ export const layersService = {
 		} else {
 			const { layers } = this.layersStore.state;
 
-			/* change between 'dark' and 'outdoors' map styles (basemaps) */
+			/* change between default 'outdoors' and secondary 'satellite' map styles (basemaps) */
 			if (layer === 'aerial') {
-				mapService.changeMapStyle();
-
 				/* hide active markers when changing map styles for aesthetic purposes */
 				markerDisplayService.hideMarkers();
 
+				mapService.changeMapStyle();
+
 				/* show active markers after changing map styles for aesthetic purposes */
-				setTimeout(() => markerDisplayService.showMarkers(), 1000);
+				setTimeout(() => markerDisplayService.showMarkers(), 1200);
 			/* set style layer visibility */
 			} else if (layer === 'biosphere' || layer === 'trails') {
 				if (layers[i].active) {
