@@ -13,8 +13,8 @@ services:
     environment:
       DATABASE_URL: ${DATABASE_URL}
   postgres:
-    container_name: postgres
-    image: mdillon/postgis:9.6-alpine
+    container_name: postgis
+    image: mdillon/postgis:11-alpine
     restart: always
     volumes:
       - ./data/pg.sql:/docker-entrypoint-initdb.d/pg.sql
