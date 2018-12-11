@@ -26,39 +26,41 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-div div.biosphere-icon {
-	position: absolute;
-	cursor: pointer;
-	left: 22px;
-	top: 155px;
-	height: 18px;
-	width: 18px;
-}
+div {
+	div.biosphere-icon {
+		position: absolute;
+		cursor: pointer;
+		left: 22px;
+		top: 155px;
+		height: 18px;
+		width: 18px;
+	}
 
-div div.office-icon {
-	position: absolute;
-	cursor: pointer;
-	left: 22px;
-	top: 183px;
-	height: 20px;
-	width: 18px;
-}
+	div.office-icon {
+		position: absolute;
+		cursor: pointer;
+		left: 22px;
+		top: 183px;
+		height: 20px;
+		width: 18px;
+	}
 
-div div.places-icon {
-	position: absolute;
-	cursor: pointer;
-	left: 22px;
-	top:212px;
-	height: 20px;
-	width: 18px;
-}
+	div.places-icon {
+		position: absolute;
+		cursor: pointer;
+		left: 22px;
+		top:212px;
+		height: 20px;
+		width: 18px;
+	}
 
-div div.trails-icon {
-	position: absolute;
-	cursor: pointer;
-	left: 22px;
-	top: 241px;
-	height: 20px;
-	width: 18px;
+	div.trails-icon {
+		position: absolute;
+		cursor: pointer;
+		left: 22px;
+		top: 241px;
+		height: 20px;
+		width: 18px;
+	}
 }
 </style>

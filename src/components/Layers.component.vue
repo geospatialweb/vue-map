@@ -42,12 +42,14 @@ export default {
 </script>
 
 <style lang='scss'>
-div ul.layers {
-	position: absolute;
-	margin: 0;
-	padding: 0;
-	list-style-type: none;
-	left: 10px;
-	top: 120px;
+div {
+	ul.layers {
+		position: absolute;
+		margin: 0;
+		padding: 0;
+		list-style-type: none;
+		left: 10px;
+		top: 120px;
+	}
 }
 </style>

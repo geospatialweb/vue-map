@@ -25,41 +25,52 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-div ul.layers li div {
-	display: block;
-	padding: 5px 0 5px 40px;
-	background: rgb(160,150,140);
-	border: 1px solid rgb(187,187,187);
-	border-bottom-width: 0;
-	color: rgb(60,75,90);
-	cursor: pointer;
-	font-family: 'Roboto', sans-serif;
-	font-size: 0.95em;
-	text-decoration: none;
-	width: 90px;
+$active-background-color:  rgb(120,110,100);
+$hover-background-color:   rgb(140,130,120);
+$primary-background-color: rgb(160,150,140);
+
+@mixin border-radius($radius) {
+	border-radius: $radius;
+	-webkit-border-radius: $radius;
+	-moz-border-radius: $radius;
+	-ms-border-radius: $radius;
 }
 
-div ul.layers li div:hover {
-	background: rgb(140,130,120);
-}
+div ul.layers li {
+	&:first-child div {
+		@include border-radius(3px 3px 0 0);
+	}
 
-div ul.layers li:first-child div {
-	border-radius: 3px 3px 0 0;
-	-webkit-border-radius: 3px 3px 0 0;
-}
+	&:last-child div {
+		@include border-radius(0 0 3px 3px);
+		border-bottom-width: 1px;
+	}
 
-div ul.layers li:last-child div {
-	border-bottom-width: 1px;
-	border-radius: 0 0 3px 3px;
-	-webkit-border-radius: 0 0 3px 3px;
-}
+	div {
+		display: block;
+		padding: 5px 0 5px 40px;
+		background: $primary-background-color;
+		border: 1px solid rgb(187,187,187);
+		border-bottom-width: 0;
+		color: rgb(60,75,90);
+		cursor: pointer;
+		font-family: 'Roboto', sans-serif;
+		font-size: 0.95em;
+		text-decoration: none;
+		width: 90px;
 
-div ul.layers li div.aerial.active,
-div ul.layers li div.biosphere.active,
-div ul.layers li div.office.active,
-div ul.layers li div.places.active,
-div ul.layers li div.trails.active {
-	background: rgb(120,110,100);
-	color: rgb(216,216,216);
+		&:hover {
+			background: $hover-background-color;
+		}
+	}
+
+	div.aerial.active,
+	div.biosphere.active,
+	div.office.active,
+	div.places.active,
+	div.trails.active {
+		background: $active-background-color;
+		color: rgb(216,216,216);
+	}
 }
 </style>

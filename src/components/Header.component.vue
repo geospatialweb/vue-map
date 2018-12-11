@@ -26,32 +26,33 @@ div.headerContainer {
 	font-family: 'Orbitron', sans-serif;
 	height: 45px;
 	width: 100%;
-}
 
-div.headerContainer img.logo {
-	margin: 0;
-	padding: 4px 0 0 5px;
-	float: left;
-	height: 40px;
-	width: 40px;
-}
-div.headerContainer div.company {
-	padding: 10px 0 0 8px;
-	float: left;
-	font-size: 1.3em;
-}
+	img.logo {
+		margin: 0;
+		padding: 3px 0 0 5px;
+		float: left;
+		height: 40px;
+		width: 40px;
+	}
 
-div.headerContainer div.title {
-	padding: 14px 0 0 20px;
-	color: rgb(160,0,0);
-	float: left;
-	font-size: 1em;
-}
+	div.company {
+		padding: 10px 0 0 8px;
+		float: left;
+		font-size: 1.3em;
+	}
 
-div.headerContainer a.repo {
-	padding: 13px 10px 0 0;
-	color: rgb(0,0,0);
-	float: right;
-	font-size: .9em;
+	div.title {
+		padding: 14px 0 0 20px;
+		color: rgb(160,0,0);
+		float: left;
+		font-size: 1em;
+	}
+
+	a.repo {
+		padding: 13px 10px 0 0;
+		color: rgb(0,0,0);
+		float: right;
+		font-size: .9em;
+	}
 }
 </style>
