@@ -29,6 +29,9 @@ $active-background-color:  rgb(120,110,100);
 $hover-background-color:   rgb(140,130,120);
 $primary-background-color: rgb(160,150,140);
 
+$active-text-color:  rgb(216,216,216);
+$primary-text-color: rgb(60,75,90);
+
 @mixin border-radius($radius) {
 	border-radius: $radius;
 	-webkit-border-radius: $radius;
@@ -52,7 +55,7 @@ div ul.layers li {
 		background: $primary-background-color;
 		border: 1px solid rgb(187,187,187);
 		border-bottom-width: 0;
-		color: rgb(60,75,90);
+		color: $primary-text-color;
 		cursor: pointer;
 		font-family: 'Roboto', sans-serif;
 		font-size: 0.95em;
@@ -64,13 +67,9 @@ div ul.layers li {
 		}
 	}
 
-	div.aerial.active,
-	div.biosphere.active,
-	div.office.active,
-	div.places.active,
-	div.trails.active {
+	div.active {
 		background: $active-background-color;
-		color: rgb(216,216,216);
+		color: $active-text-color;
 	}
 }
 </style>
