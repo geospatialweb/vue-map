@@ -1,12 +1,12 @@
-import { layers } from '../config/layers.config';
+import layersConfig from '../config/layers.config';
 
-export const layersStore = {
+export default {
 	state: {
-		layers,
+		layers: layersConfig,
 	},
 
 	setLayerActive(i) {
-		if (Object.prototype.hasOwnProperty.call(layersStore.state.layers[i], 'active')) {
+		if (Object.prototype.hasOwnProperty.call(this.state.layers[i], 'active')) {
 			this.state.layers[i].active = !this.state.layers[i].active;
 		}
 	},

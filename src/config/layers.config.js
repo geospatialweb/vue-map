@@ -1,4 +1,4 @@
-export const layers = [
+export default [
 	{
 		active: false,
 		class: 'aerial',

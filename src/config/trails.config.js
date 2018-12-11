@@ -1,4 +1,4 @@
-export const trails = [
+export default [
 	{
 		name: 'Select Trail',
 	},

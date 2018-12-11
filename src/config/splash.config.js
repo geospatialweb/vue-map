@@ -1,4 +1,4 @@
-export const splash = {
+export default {
 	splashElement: {
 		active: true,
 		class: 'splash',

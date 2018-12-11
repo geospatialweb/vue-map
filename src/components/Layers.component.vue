@@ -9,16 +9,16 @@
 </template>
 
 <script>
-import { layersService } from '../services/layers.service';
-import { layersStore } from '../stores/layers.store';
-import LayerElements from './LayerElements.component.vue';
-import LayerIcons from './LayerIcons.component.vue';
+import LayerElementsComponent from './LayerElements.component.vue';
+import LayerIconsComponent from './LayerIcons.component.vue';
+import layersService from '../services/layers.service';
+import layersStore from '../stores/layers.store';
 
 export default {
-	name: 'Layers',
+	name: 'LayersComponent',
 	components: {
-		LayerElements,
-		LayerIcons,
+		LayerElements: LayerElementsComponent,
+		LayerIcons: LayerIconsComponent,
 	},
 	data() {
 		return {

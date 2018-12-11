@@ -1,6 +1,6 @@
-import { splashStore } from '../stores/splash.store';
+import splashStore from '../stores/splash.store';
 
-export const splashService = {
+export default {
 	splashStore,
 
 	hideSplash() {

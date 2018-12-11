@@ -1,7 +1,7 @@
-import { mapService } from './map.service';
-import { markersService } from './markers.service';
+import mapService from './map.service';
+import markersService from './markers.service';
 
-export const markerDisplayService = {
+export default {
 	addMarkers(layer) {
 		markersService.markers[markersService.markersHash[layer]]
 			.map(marker => marker.addTo(mapService.map));

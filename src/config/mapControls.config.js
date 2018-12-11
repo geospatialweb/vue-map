@@ -1,4 +1,4 @@
-export const mapControls = {
+export default {
 	navigationControl: {
 		position: 'top-left',
 	},

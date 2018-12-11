@@ -1,4 +1,4 @@
-export const layerStyles = {
+export default {
 	biosphere: {
 		name: 'biosphere',
 		fields: 'name, description, ST_AsGeoJSON(geom)',

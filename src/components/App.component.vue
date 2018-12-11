@@ -6,14 +6,14 @@
 </template>
 
 <script>
-import Canvas from './Canvas.component.vue';
-import Header from './Header.component.vue';
+import CanvasComponent from './Canvas.component.vue';
+import HeaderComponent from './Header.component.vue';
 
 export default {
-	name: 'App',
+	name: 'AppComponent',
 	components: {
-		Canvas,
-		Header,
+		Canvas: CanvasComponent,
+		Header: HeaderComponent,
 	},
 };
 </script>

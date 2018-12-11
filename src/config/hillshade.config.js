@@ -1,4 +1,4 @@
-export const hillshade = {
+export default {
 	id: 'hillshading',
 	/* index: where hillshading resides in 'outdoors-v10' style */
 	index: 'waterway-river-canal-shadow',

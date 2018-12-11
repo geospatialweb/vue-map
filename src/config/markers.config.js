@@ -1,4 +1,4 @@
-export const markers = {
+export default {
 	office: {
 		name: 'office',
 		fields: 'name, description, ST_AsGeoJSON(geom)',

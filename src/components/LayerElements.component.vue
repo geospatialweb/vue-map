@@ -5,11 +5,11 @@
 </template>
 
 <script>
-import { layersService } from '../services/layers.service';
-import { layersStore } from '../stores/layers.store';
+import layersService from '../services/layers.service';
+import layersStore from '../stores/layers.store';
 
 export default {
-	name: 'LayerElements',
+	name: 'LayerElementsComponent',
 	props: ['el'],
 	methods: {
 		selectLayer: (event) => {

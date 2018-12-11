@@ -6,11 +6,11 @@
 </template>
 
 <script>
-import { layersService } from '../services/layers.service';
-import { layersStore } from '../stores/layers.store';
+import layersService from '../services/layers.service';
+import layersStore from '../stores/layers.store';
 
 export default {
-	name: 'LayerIcons',
+	name: 'LayerIconsComponent',
 	props: ['icon'],
 	methods: {
 		selectLayer: (event) => {

@@ -1,8 +1,8 @@
-import { splash } from '../config/splash.config';
+import splashConfig from '../config/splash.config';
 
-export const splashStore = {
+export default {
 	state: {
-		splash,
+		splash: splashConfig,
 	},
 
 	setLayerActive() {

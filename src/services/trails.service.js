@@ -1,8 +1,8 @@
-import { trails } from '../config/trails.config';
-import { mapService } from './map.service';
+import trailsConfig from '../config/trails.config';
+import mapService from './map.service';
 
-export const trailsService = {
-	trails,
+export default {
+	trails: trailsConfig,
 	trailsHash: {},
 
 	createTrailsHash() {

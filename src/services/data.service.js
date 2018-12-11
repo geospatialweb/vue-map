@@ -1,15 +1,15 @@
 import { Axios } from 'axios-observable';
-import { data } from '../config/data.config';
-import { layerStyles } from '../config/layerStyles.config';
-import { markers } from '../config/markers.config';
-import { layerStylesService } from './layerStyles.service';
-import { mapService } from './map.service';
-import { markersService } from './markers.service';
+import dataConfig from '../config/data.config';
+import layerStylesConfig from '../config/layerStyles.config';
+import markersConfig from '../config/markers.config';
+import layerStylesService from './layerStyles.service';
+import mapService from './map.service';
+import markersService from './markers.service';
 
-export const dataService = {
-	route: data.route,
-	layerStyles,
-	markers,
+export default {
+	route: dataConfig.route,
+	layerStyles: layerStylesConfig,
+	markers: markersConfig,
 
 	/* HTTP request to obtain layer styles from back-end PostGIS server */
 	getLayerStyles() {

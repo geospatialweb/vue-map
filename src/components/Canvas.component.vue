@@ -8,22 +8,22 @@
 </template>
 
 <script>
-import { canvas } from '../config/canvas.config';
-import Layers from './Layers.component.vue';
-import Splash from './Splash.component.vue';
-import Trails from './Trails.component.vue';
+import LayersComponent from './Layers.component.vue';
+import SplashComponent from './Splash.component.vue';
+import TrailsComponent from './Trails.component.vue';
+import canvasConfig from '../config/canvas.config';
 
 export default {
-	name: 'Canvas',
+	name: 'CanvasComponent',
 	data() {
 		return {
-			canvas,
+			canvas: canvasConfig,
 		};
 	},
 	components: {
-		Layers,
-		Splash,
-		Trails,
+		Layers: LayersComponent,
+		Splash: SplashComponent,
+		Trails: TrailsComponent,
 	},
 };
 </script>

@@ -1,7 +1,7 @@
 import mapboxgl from 'mapbox-gl';
-import { mapService } from './map.service';
+import mapService from './map.service';
 
-export const markersService = {
+export default {
 	markers: [],
 	markersHash: {},
 

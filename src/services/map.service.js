@@ -1,32 +1,32 @@
 import mapboxgl from 'mapbox-gl';
-import { canvas } from '../config/canvas.config';
-import { hillshade } from '../config/hillshade.config';
-import { layerStyles } from '../config/layerStyles.config';
-import { mapControls } from '../config/mapControls.config';
-import { mapStyles } from '../config/mapStyles.config';
-import { markers } from '../config/markers.config';
-import { splash } from '../config/splash.config';
-import { dataService } from './data.service';
-import { layerStylesService } from './layerStyles.service';
-import { markersService } from './markers.service';
-import { splashService } from './splash.service';
-import { trailsService } from './trails.service';
+import canvasConfig from '../config/canvas.config';
+import hillshadeConfig from '../config/hillshade.config';
+import layerStylesConfig from '../config/layerStyles.config';
+import mapControlsConfig from '../config/mapControls.config';
+import mapStylesConfig from '../config/mapStyles.config';
+import markersConfig from '../config/markers.config';
+import splashConfig from '../config/splash.config';
+import dataService from './data.service';
+import layerStylesService from './layerStyles.service';
+import markersService from './markers.service';
+import splashService from './splash.service';
+import trailsService from './trails.service';
 
-export const mapService = {
-	accessToken: canvas.accessToken,
-	hillshade,
-	layerStyles,
-	mapControls,
+export default {
+	accessToken: canvasConfig.accessToken,
+	hillshade: hillshadeConfig,
+	layerStyles: layerStylesConfig,
+	mapControls: mapControlsConfig,
 	mapOptions: {
-		container: canvas.container,
-		style: mapStyles.outdoors,
-		center: canvas.center,
-		zoom: canvas.zoom,
+		container: canvasConfig.container,
+		style: mapStylesConfig.outdoors,
+		center: canvasConfig.center,
+		zoom: canvasConfig.zoom,
 	},
-	mapStyle: mapStyles.outdoors,
-	mapStyles,
-	markers,
-	splash,
+	mapStyle: mapStylesConfig.outdoors,
+	mapStyles: mapStylesConfig,
+	markers: markersConfig,
+	splash: splashConfig,
 
 	/* instantiate map instance */
 	loadMap() {

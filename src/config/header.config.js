@@ -1,4 +1,4 @@
-export const header = {
+export default {
 	company: {
 		name: 'Geospatial Web',
 	},

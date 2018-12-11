@@ -8,13 +8,13 @@
 </template>
 
 <script>
-import { header } from '../config/header.config';
+import headerConfig from '../config/header.config';
 
 export default {
-	name: 'Header',
+	name: 'HeaderComponent',
 	data() {
 		return {
-			header,
+			header: headerConfig,
 		};
 	},
 };

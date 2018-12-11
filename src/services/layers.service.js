@@ -1,9 +1,9 @@
-import { layersStore } from '../stores/layers.store';
-import { layerStylesService } from './layerStyles.service';
-import { mapService } from './map.service';
-import { markerDisplayService } from './markerDisplay.service';
+import layersStore from '../stores/layers.store';
+import layerStylesService from './layerStyles.service';
+import mapService from './map.service';
+import markerDisplayService from './markerDisplay.service';
 
-export const layersService = {
+export default {
 	layersStore,
 
 	setLayer(layer, i) {

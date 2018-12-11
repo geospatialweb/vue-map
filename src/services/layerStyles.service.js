@@ -1,4 +1,4 @@
-export const layerStylesService = {
+export default {
 	layerStyles: [],
 	layerStylesHash: {},
 
