@@ -1,13 +1,11 @@
 import mapService from './map.service';
 import store from '../store';
 
-const dataStore = store;
-
 export default {
 	trailsHash: {},
 
 	createTrailsHash() {
-		dataStore.state.trails
+		store.state.trails
 			.filter((trail, i) => i > 0)
 			.map((trail, i) => {
 				this.trailsHash[trail.name] = i + 1;
@@ -23,7 +21,7 @@ export default {
 		const { trails } = store.state;
 
 		if (trail !== trails[0].name) {
-			dataStore.setTrailsActive(this.trailsHash[trail]);
+			store.setTrailsActive(this.trailsHash[trail]);
 
 			mapService.map.flyTo({
 				center: trails[this.trailsHash[trail]].center,

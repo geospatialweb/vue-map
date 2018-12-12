@@ -5,14 +5,14 @@
 </template>
 
 <script>
-import trailsConfig from '../config/trails.config';
 import trailsService from '../services/trails.service';
+import store from '../store';
 
 export default {
 	name: 'TrailsComponent',
 	data() {
 		return {
-			trails: trailsConfig,
+			trails: store.state.trails,
 		};
 	},
 	methods: {

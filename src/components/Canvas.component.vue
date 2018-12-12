@@ -8,10 +8,10 @@
 </template>
 
 <script>
+import canvasConfig from '../config/canvas.config';
 import LayersComponent from './Layers.component.vue';
 import SplashComponent from './Splash.component.vue';
 import TrailsComponent from './Trails.component.vue';
-import canvasConfig from '../config/canvas.config';
 
 export default {
 	name: 'CanvasComponent',

@@ -3,15 +3,13 @@ import mapService from './map.service';
 import markerDisplayService from './markerDisplay.service';
 import store from '../store';
 
-const dataStore = store;
-
 export default {
 	setLayerActive(i) {
-		dataStore.setLayerActive(i);
+		store.setLayerActive(i);
 	},
 
 	setLayer(layer, i) {
-		const { layers, layerStyles } = dataStore.state;
+		const { layers, layerStyles } = store.state;
 
 		/* refresh app */
 		if (layer === 'reset') {

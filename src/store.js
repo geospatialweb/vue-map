@@ -17,7 +17,7 @@ export default {
 		}
 	},
 
-	addLayerStyles(layerStyle) {
+	addLayerStyle(layerStyle) {
 		this.state.layerStyles.push(layerStyle);
 	},
 

@@ -1,22 +1,16 @@
 import mapboxgl from 'mapbox-gl';
 import canvasConfig from '../config/canvas.config';
 import hillshadeConfig from '../config/hillshade.config';
-import layerStylesConfig from '../config/layerStyles.config';
 import mapControlsConfig from '../config/mapControls.config';
 import mapStylesConfig from '../config/mapStyles.config';
-import markersConfig from '../config/markers.config';
-import splashConfig from '../config/splash.config';
 import dataService from './data.service';
 import splashService from './splash.service';
 import trailsService from './trails.service';
 import store from '../store';
 
-const dataStore = store;
-
 export default {
 	accessToken: canvasConfig.accessToken,
 	hillshade: hillshadeConfig,
-	layerStyles: layerStylesConfig,
 	mapControls: mapControlsConfig,
 	mapOptions: {
 		container: canvasConfig.container,
@@ -26,8 +20,6 @@ export default {
 	},
 	mapStyle: mapStylesConfig.outdoors,
 	mapStyles: mapStylesConfig,
-	markers: markersConfig,
-	splash: splashConfig,
 
 	/* instantiate map instance */
 	loadMap() {
@@ -39,17 +31,15 @@ export default {
 			.addControl(new mapboxgl.NavigationControl(), this.mapControls.navigationControl.position)
 			/* once markers and layers loaded, hide splash screen */
 			.on('styledata', () => {
-				if (dataStore.state.markers.length === Object.keys(this.markers).length &&
-						dataStore.state.layerStyles.length === Object.keys(this.layerStyles).length &&
-						splashElement.className === `${this.splash.splashElement.class} active`) {
+				if (store.state.markers.length === Object.keys(dataService.markers).length &&
+						store.state.layerStyles.length === Object.keys(dataService.layerStyles).length &&
+						splashElement.className === `${store.state.splash.splashElement.class} active`) {
 					splashService.hideSplash();
 				}
 			})
 			.on('load', () => {
-				this.map.addSource(this.hillshade.source, this.hillshade.layer);
 				this.addLayerStyle(this.hillshade, this.hillshade.index);
-
-				splashElement = document.querySelector(`${this.splash.splashElement.selector}`);
+				splashElement = document.querySelector(`${store.state.splash.splashElement.selector}`);
 
 				dataService.getData();
 				trailsService.createTrailsHash();
@@ -57,6 +47,10 @@ export default {
 	},
 
 	addLayerStyle(layerStyle, index) {
+		if (index) {
+			this.map.addSource(layerStyle.source, layerStyle.layer);
+		}
+
 		this.map.addLayer(layerStyle, index);
 	},
 
@@ -70,11 +64,10 @@ export default {
 		/* add hillshading and layer styles to changed map style after 1 sec delay to load  */
 		setTimeout(() => {
 			if (this.mapStyle === this.mapStyles.outdoors) {
-				this.map.addSource(this.hillshade.source, this.hillshade.layer);
 				this.addLayerStyle(this.hillshade, this.hillshade.index);
 			}
 
-			dataStore.state.layerStyles.map((layerStyle) => {
+			store.state.layerStyles.map((layerStyle) => {
 				this.map.addLayer(layerStyle);
 
 				if (layerStyle.layout.visibility === 'visible') {

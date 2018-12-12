@@ -7,12 +7,10 @@ import mapService from './map.service';
 import markersService from './markers.service';
 import store from '../store';
 
-const dataStore = store;
-
 export default {
-	route: dataConfig.route,
 	layerStyles: layerStylesConfig,
 	markers: markersConfig,
+	route: dataConfig.route,
 
 	getData() {
 		this.getMarkers();
@@ -39,7 +37,7 @@ export default {
 					console.error('Query Failed:\n', err.error);
 				},
 				() => {
-					if (dataStore.state.markers.length === Object.keys(this.markers).length) {
+					if (store.state.markers.length === Object.keys(this.markers).length) {
 						markersService.createMarkersHash();
 					}
 
@@ -62,7 +60,7 @@ export default {
 						const layerStyle = this.layerStyles[key].layer;
 						layerStyle.source.data = res.data;
 
-						layerStylesService.addLayerStyles(layerStyle);
+						layerStylesService.addLayerStyle(layerStyle);
 						mapService.addLayerStyle(layerStyle);
 					} else {
 						console.error('Data Error:\n', res.data);
@@ -72,7 +70,7 @@ export default {
 					console.error('Query Failed:\n', err.error);
 				},
 				() => {
-					if (dataStore.state.layerStyles.length === Object.keys(this.layerStyles).length) {
+					if (store.state.layerStyles.length === Object.keys(this.layerStyles).length) {
 						layerStylesService.createLayerStylesHash();
 					}
 
