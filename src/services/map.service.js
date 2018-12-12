@@ -7,10 +7,11 @@ import mapStylesConfig from '../config/mapStyles.config';
 import markersConfig from '../config/markers.config';
 import splashConfig from '../config/splash.config';
 import dataService from './data.service';
-import layerStylesService from './layerStyles.service';
-import markersService from './markers.service';
 import splashService from './splash.service';
 import trailsService from './trails.service';
+import store from '../store';
+
+const dataStore = store;
 
 export default {
 	accessToken: canvasConfig.accessToken,
@@ -38,9 +39,9 @@ export default {
 			.addControl(new mapboxgl.NavigationControl(), this.mapControls.navigationControl.position)
 			/* once markers and layers loaded, hide splash screen */
 			.on('styledata', () => {
-				if (markersService.markers.length === Object.keys(this.markers).length
-						&& layerStylesService.layerStyles.length === Object.keys(this.layerStyles).length
-						&& splashElement.className === `${this.splash.splashElement.class} active`) {
+				if (dataStore.state.markers.length === Object.keys(this.markers).length &&
+						dataStore.state.layerStyles.length === Object.keys(this.layerStyles).length &&
+						splashElement.className === `${this.splash.splashElement.class} active`) {
 					splashService.hideSplash();
 				}
 			})
@@ -50,8 +51,7 @@ export default {
 
 				splashElement = document.querySelector(`${this.splash.splashElement.selector}`);
 
-				dataService.getMarkers();
-				dataService.getLayerStyles();
+				dataService.getData();
 				trailsService.createTrailsHash();
 			});
 	},
@@ -61,11 +61,9 @@ export default {
 	},
 
 	setMapStyle() {
-		if (this.mapStyle === this.mapStyles.outdoors) {
-			this.mapStyle = this.mapStyles.satellite;
-		} else {
+		this.mapStyle === this.mapStyles.outdoors ?
+			this.mapStyle = this.mapStyles.satellite :
 			this.mapStyle = this.mapStyles.outdoors;
-		}
 
 		this.map.setStyle(this.mapStyle);
 
@@ -76,7 +74,7 @@ export default {
 				this.addLayerStyle(this.hillshade, this.hillshade.index);
 			}
 
-			layerStylesService.layerStyles.map((layerStyle) => {
+			dataStore.state.layerStyles.map((layerStyle) => {
 				this.map.addLayer(layerStyle);
 
 				if (layerStyle.layout.visibility === 'visible') {

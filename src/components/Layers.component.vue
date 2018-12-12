@@ -12,7 +12,7 @@
 import LayerElementsComponent from './LayerElements.component.vue';
 import LayerIconsComponent from './LayerIcons.component.vue';
 import layersService from '../services/layers.service';
-import layersStore from '../stores/layers.store';
+import store from '../store';
 
 export default {
 	name: 'LayersComponent',
@@ -22,19 +22,19 @@ export default {
 	},
 	data() {
 		return {
-			layers: layersStore.state.layers,
+			layers: store.state.layers,
 		};
 	},
 	computed: {
-		icons: () => layersStore.state.layers.filter(layer => layer.icon),
+		icons: () => store.state.layers.filter(layer => layer.icon),
 	},
 	methods: {
 		selectLayer: (event) => {
 			const layer = event.target.classList[0];
 			/* eslint-disable-next-line no-shadow */
-			const i = layersStore.state.layers.findIndex(event => event.class === layer);
+			const i = store.state.layers.findIndex(event => event.class === layer);
 
-			layersStore.setLayerActive(i);
+			layersService.setLayerActive(i);
 			layersService.setLayer(layer, i);
 		},
 	},

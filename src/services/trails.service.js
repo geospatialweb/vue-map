@@ -1,12 +1,13 @@
-import trailsConfig from '../config/trails.config';
 import mapService from './map.service';
+import store from '../store';
+
+const dataStore = store;
 
 export default {
-	trails: trailsConfig,
 	trailsHash: {},
 
 	createTrailsHash() {
-		this.trails
+		dataStore.state.trails
 			.filter((trail, i) => i > 0)
 			.map((trail, i) => {
 				this.trailsHash[trail.name] = i + 1;
@@ -19,11 +20,14 @@ export default {
 		event.stopPropagation();
 
 		const trail = event.target.value;
+		const { trails } = store.state;
 
-		if (trail !== this.trails[0].name) {
+		if (trail !== trails[0].name) {
+			dataStore.setTrailsActive(this.trailsHash[trail]);
+
 			mapService.map.flyTo({
-				center: this.trails[this.trailsHash[trail]].center,
-				zoom: this.trails[this.trailsHash[trail]].zoom,
+				center: trails[this.trailsHash[trail]].center,
+				zoom: trails[this.trailsHash[trail]].zoom,
 			});
 		}
 	},

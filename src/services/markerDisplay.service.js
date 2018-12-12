@@ -1,19 +1,22 @@
 import mapService from './map.service';
 import markersService from './markers.service';
+import store from '../store';
+
+const dataStore = store;
 
 export default {
 	addMarkers(layer) {
-		markersService.markers[markersService.markersHash[layer]]
+		dataStore.state.markers[markersService.markersHash[layer]]
 			.map(marker => marker.addTo(mapService.map));
 	},
 
 	removeMarkers(layer) {
-		markersService.markers[markersService.markersHash[layer]]
+		dataStore.state.markers[markersService.markersHash[layer]]
 			.map(marker => marker.remove());
 	},
 
 	hideMarkers() {
-		markersService.markers.map((marker) => {
+		dataStore.state.markers.map((marker) => {
 			const name = marker[0].getElement().classList[0].replace('-marker', '');
 			const el = document.querySelector(`div.${name}-marker`);
 
@@ -27,7 +30,7 @@ export default {
 	},
 
 	showMarkers() {
-		markersService.markers.map((marker) => {
+		dataStore.state.markers.map((marker) => {
 			if (marker.hidden) {
 				const name = marker[0].getElement().classList[0].replace('-marker', '');
 

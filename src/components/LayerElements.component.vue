@@ -6,7 +6,7 @@
 
 <script>
 import layersService from '../services/layers.service';
-import layersStore from '../stores/layers.store';
+import store from '../store';
 
 export default {
 	name: 'LayerElementsComponent',
@@ -15,9 +15,9 @@ export default {
 		selectLayer: (event) => {
 			const layer = event.target.classList[0];
 			/* eslint-disable-next-line no-shadow */
-			const i = layersStore.state.layers.findIndex(event => event.class === layer);
+			const i = store.state.layers.findIndex(event => event.class === layer);
 
-			layersStore.setLayerActive(i);
+			layersService.setLayerActive(i);
 			layersService.setLayer(layer, i);
 		},
 	},

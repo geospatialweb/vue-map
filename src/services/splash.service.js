@@ -1,9 +1,9 @@
-import splashStore from '../stores/splash.store';
+import store from '../store';
+
+const dataStore = store;
 
 export default {
-	splashStore,
-
 	hideSplash() {
-		this.splashStore.setLayerActive();
+		dataStore.setSplashElementActive();
 	},
 };

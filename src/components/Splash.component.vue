@@ -3,13 +3,13 @@
 </template>
 
 <script>
-import splashStore from '../stores/splash.store';
+import store from '../store';
 
 export default {
 	name: 'SplashComponent',
 	data() {
 		return {
-			splash: splashStore.state.splash,
+			splash: store.state.splash,
 		};
 	},
 };

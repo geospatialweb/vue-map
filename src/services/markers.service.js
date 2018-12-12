@@ -1,12 +1,14 @@
 import mapboxgl from 'mapbox-gl';
 import mapService from './map.service';
+import store from '../store';
+
+const dataStore = store;
 
 export default {
-	markers: [],
 	markersHash: {},
 
 	createMarkersHash() {
-		this.markers.map((marker, i) => {
+		dataStore.state.markers.map((marker, i) => {
 			const name = marker[0].getElement().classList[0].replace('-marker', '');
 
 			this.markersHash[name] = i;
@@ -64,6 +66,6 @@ export default {
 			return true;
 		});
 
-		this.markers.push(markers);
+		dataStore.addMarkers(markers);
 	},
 };
