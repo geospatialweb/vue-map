@@ -17,5 +17,8 @@ module.exports = {
 		'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
 		'no-param-reassign': ['error', { props: false }],
 		'no-tabs': ['error', { allowIndentationTabs: true }],
+		'no-unused-expressions': ['error', { 'allowTernary': true }],
+        'operator-linebreak': ['error', 'before',
+            { 'overrides': { '+': 'after', '?': 'after', ':': 'after', '&&': 'after' } }],
 	},
 };
