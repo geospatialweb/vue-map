@@ -29,10 +29,10 @@ export default {
 
 		this.map = new mapboxgl.Map(this.mapOptions)
 			.addControl(new mapboxgl.NavigationControl(), this.mapControls.navigationControl.position)
-			/* once markers and layers loaded, hide splash screen */
+			/* once layers and markers loaded, hide splash screen */
 			.on('styledata', () => {
-				if (store.state.markers.length === Object.keys(dataService.markers).length &&
-						store.state.layerStyles.length === Object.keys(dataService.layerStyles).length &&
+				if (store.state.layerStyles.length === Object.keys(dataService.layerStyles).length &&
+						store.state.markers.length === Object.keys(dataService.markers).length &&
 						splashElement.className === `${store.state.splashElement.class} active`) {
 					splashElementService.hideSplashScreen();
 				}
