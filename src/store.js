@@ -1,5 +1,5 @@
 import layersConfig from './config/layers.config';
-import splashConfig from './config/splash.config';
+import splashElementConfig from './config/splashElement.config';
 import trailsConfig from './config/trails.config';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 		layers: layersConfig,
 		layerStyles: [],
 		markers: [],
-		splash: splashConfig,
+		splashElement: splashElementConfig,
 		trails: trailsConfig,
 	},
 
@@ -26,7 +26,7 @@ export default {
 	},
 
 	setSplashElementActive() {
-		this.state.splash.splashElement.active = !this.state.splash.splashElement.active;
+		this.state.splashElement.active = !this.state.splashElement.active;
 	},
 
 	setTrailsActive(index) {

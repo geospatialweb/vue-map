@@ -4,7 +4,7 @@ import hillshadeConfig from '../config/hillshade.config';
 import mapControlsConfig from '../config/mapControls.config';
 import mapStylesConfig from '../config/mapStyles.config';
 import dataService from './data.service';
-import splashService from './splash.service';
+import splashElementService from './splashElement.service';
 import trailsService from './trails.service';
 import store from '../store';
 
@@ -33,13 +33,13 @@ export default {
 			.on('styledata', () => {
 				if (store.state.markers.length === Object.keys(dataService.markers).length &&
 						store.state.layerStyles.length === Object.keys(dataService.layerStyles).length &&
-						splashElement.className === `${store.state.splash.splashElement.class} active`) {
-					splashService.hideSplash();
+						splashElement.className === `${store.state.splashElement.class} active`) {
+					splashElementService.hideSplashScreen();
 				}
 			})
 			.on('load', () => {
 				this.addLayerStyle(this.hillshade, this.hillshade.index);
-				splashElement = document.querySelector(`${store.state.splash.splashElement.selector}`);
+				splashElement = document.querySelector(`${store.state.splashElement.selector}`);
 
 				dataService.getData();
 				trailsService.createTrailsHash();

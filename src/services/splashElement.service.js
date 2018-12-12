@@ -1,7 +1,7 @@
 import store from '../store';
 
 export default {
-	hideSplash() {
+	hideSplashScreen() {
 		store.setSplashElementActive();
 	},
 };

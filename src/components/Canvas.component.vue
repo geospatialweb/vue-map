@@ -1,7 +1,7 @@
 <template>
 	<div class='mapContainer'>
 		<div :id='canvas.container'></div>
-		<Splash />
+		<SplashElement />
 		<Layers />
 		<Trails />
 	</div>
@@ -10,7 +10,7 @@
 <script>
 import canvasConfig from '../config/canvas.config';
 import LayersComponent from './Layers.component.vue';
-import SplashComponent from './Splash.component.vue';
+import SplashElementComponent from './SplashElement.component.vue';
 import TrailsComponent from './Trails.component.vue';
 
 export default {
@@ -22,7 +22,7 @@ export default {
 	},
 	components: {
 		Layers: LayersComponent,
-		Splash: SplashComponent,
+		SplashElement: SplashElementComponent,
 		Trails: TrailsComponent,
 	},
 };
