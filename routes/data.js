@@ -5,7 +5,6 @@ const router = express.Router();
 
 module.exports = router.get('/', (req, res) => {
 	/* eslint-disable prefer-template */
-	/* eslint-disable operator-linebreak */
 	const query = 'SELECT row_to_json(fc) ' +
 		'FROM (SELECT \'FeatureCollection\' As type, array_to_json(array_agg(f)) As features ' +
 		'FROM (SELECT\'Feature\' As type, ' +
