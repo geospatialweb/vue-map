@@ -38,7 +38,7 @@ export default {
 				}
 			})
 			.on('load', () => {
-				this.addLayerStyle(this.hillshade, this.hillshade.index);
+				this.map.addLayerStyle(this.hillshade, this.hillshade.index);
 				splashElement = document.querySelector(`${store.state.splashElement.selector}`);
 
 				dataService.getData();
