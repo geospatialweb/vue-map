@@ -26,9 +26,9 @@ express()
 	.set('timeout', process.env.TIMEOUT)
 
 	.listen(process.env.PORT, process.env.HOST, (err) => {
-		if (err) {
-			console.error('Server Failed:\n', err);
-		} else {
-			console.log(`Active on http://${process.env.LOCALHOST}:${process.env.PORT} at ${new Date().toDateString()} ${new Date().toTimeString()}`);
-		}
+		err ?
+			console.error('Server Failed:\n', err) :
+
+			console.log(`Active on http://${process.env.LOCALHOST}:${process.env.PORT} at ` +
+                `${new Date().toDateString()} ${new Date().toTimeString()}`);
 	});
