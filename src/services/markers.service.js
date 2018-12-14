@@ -3,31 +3,23 @@ import mapService from './map.service';
 import store from '../store';
 
 export default {
-	markersHash: {},
-
-	createMarkersHash() {
-		store.state.markers.map((marker, i) => {
-			const name = marker[0].getElement().classList[0].replace('-marker', '');
-
-			this.markersHash[name] = i;
-			return true;
-		});
-	},
-
 	/* create individual marker elements and add mouse event handlers */
-	setMarkers(name, data) {
+	setMarkers(layer, data) {
 		const markers = [];
+
+		markers.hidden = layer.hidden;
+		markers.state = layer.state;
 
 		data.features.map((feature) => {
 			const el = document.createElement('div');
-			el.className = `${name}-marker`;
+			el.className = `${layer.name}-marker`;
 
 			const popup = new mapboxgl.Popup({
 				closeButton: false,
 				offset: 15,
 			});
 
-			if (name === 'office' || name === 'places') {
+			if (layer.name === 'office' || layer.name === 'places') {
 				el.addEventListener('mouseenter', () => {
 					popup
 						.setLngLat(feature.geometry.coordinates)
@@ -43,7 +35,7 @@ export default {
 					new mapboxgl.Marker(el)
 						.setLngLat(feature.geometry.coordinates),
 				);
-			} else if (name === 'trails') {
+			} else if (layer.name === 'trails') {
 				el.addEventListener('mouseenter', () => {
 					popup
 						.setLngLat([feature.properties.lng, feature.properties.lat])

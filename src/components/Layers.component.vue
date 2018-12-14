@@ -22,11 +22,9 @@ export default {
 	},
 	data() {
 		return {
-			layers: store.state.layers,
+			icons: store.state.layers.filter(layer => layer.icon),
+			layers: store.state.layers.filter(layer => layer.name),
 		};
-	},
-	computed: {
-		icons: () => store.state.layers.filter(layer => layer.icon),
 	},
 	methods: {
 		selectLayer: (event) => {

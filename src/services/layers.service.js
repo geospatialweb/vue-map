@@ -1,15 +1,10 @@
-import layerStylesService from './layerStyles.service';
 import mapService from './map.service';
 import markerDisplayService from './markerDisplay.service';
 import store from '../store';
 
 export default {
-	setLayerActive(i) {
-		store.setLayerActive(i);
-	},
-
 	setLayer(layer, i) {
-		const { layers, layerStyles } = store.state;
+		const { layers, layerStyles, layerStylesHash } = store.state;
 
 		/* refresh app */
 		if (layer === 'reset') {
@@ -26,7 +21,7 @@ export default {
 		/* set style layer visibility */
 		} else if (layer === 'biosphere' || layer === 'trails') {
 			if (layers[i].active) {
-				layerStyles[layerStylesService.layerStylesHash[layer]].layout.visibility = 'visible';
+				layerStyles[layerStylesHash[layer]].layout.visibility = 'visible';
 				mapService.map.setLayoutProperty(layer, 'visibility', 'visible');
 
 				/* add markers */
@@ -34,7 +29,7 @@ export default {
 					markerDisplayService.addMarkers(layer);
 				}
 			} else {
-				layerStyles[layerStylesService.layerStylesHash[layer]].layout.visibility = 'none';
+				layerStyles[layerStylesHash[layer]].layout.visibility = 'none';
 				mapService.map.setLayoutProperty(layer, 'visibility', 'none');
 
 				/* remove markers */
@@ -48,5 +43,9 @@ export default {
 				markerDisplayService.addMarkers(layer) :
 				markerDisplayService.removeMarkers(layer);
 		}
+	},
+
+	setLayerActive(i) {
+		store.setLayerActive(i);
 	},
 };

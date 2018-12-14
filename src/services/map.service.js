@@ -2,10 +2,7 @@ import mapboxgl from 'mapbox-gl';
 import canvasConfig from '../config/canvas.config';
 import hillshadeConfig from '../config/hillshade.config';
 import mapControlsConfig from '../config/mapControls.config';
-import mapStylesConfig from '../config/mapStyles.config';
 import dataService from './data.service';
-import splashElementService from './splashElement.service';
-import trailsService from './trails.service';
 import store from '../store';
 
 export default {
@@ -14,17 +11,14 @@ export default {
 	mapControls: mapControlsConfig,
 	mapOptions: {
 		container: canvasConfig.container,
-		style: mapStylesConfig.outdoors,
+		style: store.getMapStyle().url,
 		center: canvasConfig.center,
 		zoom: canvasConfig.zoom,
 	},
-	mapStyle: mapStylesConfig.outdoors,
-	mapStyles: mapStylesConfig,
+	mapStyle: store.getMapStyle(),
 
 	/* instantiate map instance */
 	loadMap() {
-		let splashElement;
-
 		mapboxgl.accessToken = this.accessToken;
 
 		this.map = new mapboxgl.Map(this.mapOptions)
@@ -33,17 +27,19 @@ export default {
 			.on('styledata', () => {
 				if (store.state.layerStyles.length === Object.keys(dataService.layerStyles).length &&
 						store.state.markers.length === Object.keys(dataService.markers).length &&
-						splashElement.className === `${store.state.splashElement.class} active`) {
-					splashElementService.hideSplashScreen();
+						store.state.splashScreen.active) {
+					store.setSplashScreen();
 				}
 			})
 			.on('load', () => {
-				this.addLayerStyle(this.hillshade, this.hillshade.index);
-				splashElement = document.querySelector(`${store.state.splashElement.selector}`);
-
+				this.addHillShading();
 				dataService.getData();
-				trailsService.createTrailsHash();
 			});
+	},
+
+	/* add hillshading to 'outdoors' map style */
+	addHillShading() {
+		this.addLayerStyle(this.hillshade, this.hillshade.index);
 	},
 
 	addLayerStyle(layerStyle, index) {
@@ -55,16 +51,15 @@ export default {
 	},
 
 	setMapStyle() {
-		this.mapStyle === this.mapStyles.outdoors ?
-			this.mapStyle = this.mapStyles.satellite :
-			this.mapStyle = this.mapStyles.outdoors;
+		store.setMapStyle(this.mapStyle.name);
+		this.mapStyle = store.getMapStyle();
 
-		this.map.setStyle(this.mapStyle);
+		this.map.setStyle(this.mapStyle.url);
 
-		/* add hillshading and layer styles to changed map style after 1 sec delay to load  */
+		/* add hillshading and layer styles after 1 sec delay to set map style */
 		setTimeout(() => {
-			if (this.mapStyle === this.mapStyles.outdoors) {
-				this.addLayerStyle(this.hillshade, this.hillshade.index);
+			if (this.mapStyle.name === store.state.mapStyles.outdoors.name) {
+				this.addHillShading();
 			}
 
 			store.state.layerStyles.map((layerStyle) => {

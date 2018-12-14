@@ -1,22 +1,22 @@
 <template>
-	<div :class='[splashElement.class, {active: splashElement.active}]'></div>
+	<div :class='[splashScreen.class, {active: splashScreen.active}]'></div>
 </template>
 
 <script>
 import store from '../store';
 
 export default {
-	name: 'SplashElementComponent',
+	name: 'SplashScreenComponent',
 	data() {
 		return {
-			splashElement: store.state.splashElement,
+			splashScreen: store.state.splashScreen,
 		};
 	},
 };
 </script>
 
 <style lang='scss' scoped>
-div.splashElement {
+div.splashScreen{
 	position: absolute;
 	background: rgba(0,0,0,.5);
 	visibility: hidden;
@@ -25,7 +25,7 @@ div.splashElement {
 	width: 100%;
 }
 
-div.splashElement.active {
+div.splashScreen.active {
 	visibility: visible;
 }
 </style>
