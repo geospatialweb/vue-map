@@ -9,8 +9,8 @@ module.exports = router.get('/', (req, res) => {
 		'FROM (SELECT \'FeatureCollection\' As type, array_to_json(array_agg(f)) As features ' +
 		'FROM (SELECT\'Feature\' As type, ' +
 			'ST_AsGeoJSON(t.geom)::json As geometry, ' +
-			'row_to_json((SELECT p FROM (SELECT ' + req.query.fields + ') As p)) As properties ' +
-		'FROM ' + req.query.table + ' As t) As f) As fc';
+			`row_to_json((SELECT p FROM (SELECT ${req.query.fields}) As p)) As properties ` +
+		`FROM ${req.query.table} As t) As f) As fc`;
 
 	const pool = new Pool({
 		/* local instance process.env.DATABASE_URL_LOCAL */
