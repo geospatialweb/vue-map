@@ -1,11 +1,13 @@
 import Vue from 'vue';
-import AppComponent from './components/App.component.vue';
-import mapService from './services/map.service';
+import App from './App.vue';
+import mapService from './services/map';
+import store from './store';
 
 Vue.config.productionTip = false;
 
 new Vue({
-	render: h => h(AppComponent),
+	store,
+	render: h => h(App),
 }).$mount('#app');
 
 mapService.loadMap();
