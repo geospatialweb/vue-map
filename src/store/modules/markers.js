@@ -1,4 +1,4 @@
-import * as io from 'socket.io-client';
+import { Axios } from 'axios-observable';
 import config from '../../config';
 import events from '../../events';
 
@@ -32,29 +32,30 @@ const mutations = {
 };
 
 const actions = {
-	getMarkers() {
-		const socket = io(config.socket.url);
-
-		Object.keys(config.markers).map((key) => {
+	getMarkers({ commit }) {
+		Object.keys(config.markers).forEach((key) => {
 			const params = {
 				fields: config.markers[key].fields,
 				table: config.markers[key].name,
 			};
 
-			socket
-				.emit(config.socket.event, params)
-				.on(params.table, (geojson) => {
-					geojson ?
-						events.markers.setMarker.emit('setMarker', config.markers[key], geojson) :
-						console.log(`Data Error:\n ${geojson}`);
+			const subscription = Axios.get('/api/geojson/', { params })
+				.subscribe((res) => {
+					res.data ?
+						events.markers.setMarker.emit('setMarker', config.markers[key], res.data) :
+						console.error('Data Error:\n', res.data);
+				},
+				(err) => {
+					console.error('Query Failed:\n', err.error);
+				},
+				() => {
+					if (state.markers.length === Object.keys(config.markers).length) {
+						commit('CREATE_MARKERS_HASH');
+					}
+
+					subscription.unsubscribe();
 				});
-
-			return true;
 		});
-	},
-
-	createMarkersHash({ commit }) {
-		commit('CREATE_MARKERS_HASH');
 	},
 
 	loadMarker({ commit }, marker) {

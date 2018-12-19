@@ -4,18 +4,11 @@ const express = require('express');
 const fs = require('fs');
 const morgan = require('morgan');
 const path = require('path');
-
-const app = express();
-const server = require('http').Server(app);
-const io = require('socket.io')(server);
-
 const config = require('./config');
-const geojson = require('./modules/geojson');
 
-io.on('connection', socket => geojson(socket));
-
-app
+express()
 	.use(express.static(path.resolve(process.env.PUBLIC_ROOT)))
+	.use('/geojson', require('./routes/geojson'))
 	.use(morgan(config.morgan.format, {
 		stream: fs.createWriteStream(path.resolve(config.morgan.logfile), {
 			flags: config.morgan.flags,
@@ -25,9 +18,8 @@ app
 	.set('env', process.env.NODE_ENV)
 	.set('host', process.env.HOST)
 	.set('port', process.env.PORT)
-	.set('timeout', process.env.TIMEOUT);
+	.set('timeout', process.env.TIMEOUT)
 
-server
 	.listen(process.env.PORT, process.env.HOST, (err) => {
 		err ?
 			console.error('Server Failed:\n', err) :

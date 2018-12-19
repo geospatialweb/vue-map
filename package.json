@@ -3,7 +3,7 @@
     "version": "2.0.0",
     "license": "MIT",
     "author": "John Campbell <johncampbell@geospatialweb.ca> <http://www.linkedin.com/in/geospatialweb>",
-    "description": "Node, Express, Vue, Vuex, Socket.IO, Mapbox GL, PostGIS, Docker Web Mapping",
+    "description": "Node, Express, Vue, Vuex, Saas, Mapbox GL, PostGIS, Docker Web Mapping",
     "private": true,
     "repository": {
         "type": "git",
@@ -17,6 +17,8 @@
     },
     "dependencies": {
         "ajv": "^6.6.2",
+        "axios": "^0.18.0",
+        "axios-observable": "^1.0.6",
         "dotenv": "^6.2.0",
         "events": "^3.0.0",
         "express": "^4.16.4",
@@ -25,8 +27,6 @@
         "path": "^0.12.7",
         "pg": "^7.7.1",
         "rxjs": "^6.3.3",
-        "socket.io": "^2.2.0",
-        "socket.io-client": "^2.2.0",
         "vue": "^2.5.21",
         "vuex": "^3.0.1"
     },

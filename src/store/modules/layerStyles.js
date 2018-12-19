@@ -1,4 +1,4 @@
-import * as io from 'socket.io-client';
+import { Axios } from 'axios-observable';
 import config from '../../config';
 import events from '../../events';
 
@@ -31,32 +31,33 @@ const mutations = {
 
 const actions = {
 	getLayerStyles({ commit }) {
-		const socket = io(config.socket.url);
-
-		Object.keys(config.layerStyles).map((key) => {
+		Object.keys(config.layerStyles).forEach((key) => {
 			const params = {
 				fields: config.layerStyles[key].fields,
 				table: config.layerStyles[key].name,
 			};
 
-			socket
-				.emit(config.socket.event, params)
-				.on(params.table, (geojson) => {
-					if (geojson) {
+			const subscription = Axios.get('/api/geojson/', { params })
+				.subscribe((res) => {
+					if (res.data) {
 						const layerStyle = config.layerStyles[key].layer;
-						layerStyle.source.data = geojson;
+						layerStyle.source.data = res.data;
 
 						commit('LOAD_LAYERSTYLE', layerStyle);
-
-						if (state.layerStyles.length === Object.keys(config.layerStyles).length) {
-							commit('CREATE_LAYERSTYLES_HASH');
-						}
 					} else {
-						console.log(`Data Error:\n ${geojson}`);
+						console.error('Data Error:\n', res.data);
 					}
-				});
+				},
+				(err) => {
+					console.error('Query Failed:\n', err.error);
+				},
+				() => {
+					if (state.layerStyles.length === Object.keys(config.layerStyles).length) {
+						commit('CREATE_LAYERSTYLES_HASH');
+					}
 
-			return true;
+					subscription.unsubscribe();
+				});
 		});
 	},
 	setLayerStyleActive({ commit }, name) {

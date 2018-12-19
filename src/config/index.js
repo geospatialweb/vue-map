@@ -11,7 +11,7 @@ export default {
 			src: 'https://github.com/geospatialweb/vue-map',
 		},
 		title: {
-			name: 'Node | Express | Vue | Vuex | Socket.IO | Mapbox GL | PostGIS | Docker',
+			name: 'Node | Express | Vue | Vuex | Sass | Mapbox GL | PostGIS | Docker',
 		},
 	},
 	hillshade: {
