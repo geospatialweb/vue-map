@@ -1,7 +1,7 @@
 <template>
 	<div :class='icon.icon' :height='icon.height' :width='icon.width'>
 		<img :class='icon.class' :src='icon.src' :height='icon.height' :width='icon.width'
-			@click='selectLayer("john")'>
+			@click='selectLayer'>
 	</div>
 </template>
 

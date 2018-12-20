@@ -31,7 +31,7 @@ const mutations = {
 
 const actions = {
 	getLayerStyles({ commit }) {
-		Object.keys(config.layerStyles).forEach((key) => {
+		Object.keys(config.layerStyles).map((key) => {
 			const params = {
 				fields: config.layerStyles[key].fields,
 				table: config.layerStyles[key].name,
@@ -58,6 +58,8 @@ const actions = {
 
 					subscription.unsubscribe();
 				});
+
+			return true;
 		});
 	},
 	setLayerStyleActive({ commit }, name) {

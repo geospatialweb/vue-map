@@ -33,7 +33,7 @@ const mutations = {
 
 const actions = {
 	getMarkers({ commit }) {
-		Object.keys(config.markers).forEach((key) => {
+		Object.keys(config.markers).map((key) => {
 			const params = {
 				fields: config.markers[key].fields,
 				table: config.markers[key].name,
@@ -55,6 +55,8 @@ const actions = {
 
 					subscription.unsubscribe();
 				});
+
+			return true;
 		});
 	},
 
