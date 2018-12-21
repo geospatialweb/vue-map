@@ -13,7 +13,7 @@ const mutations = {
 
 const actions = {
 	getMapSettings() {
-		events.styles.map.mapSettings.emit('mapSettings', state.map);
+		events.mapSettings.mapSettings.emit('mapSettings', state.map);
 	},
 	setMapSettings({ commit }, mapSettings) {
 		commit('SET_MAP_SETTINGS', mapSettings);
@@ -21,6 +21,7 @@ const actions = {
 };
 
 const MapModule = {
+	namespaced: true,
 	state,
 	actions,
 	mutations,

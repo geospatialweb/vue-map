@@ -16,7 +16,7 @@ export default {
 		};
 	},
 	methods: {
-		...mapActions(['selectTrail']),
+		...mapActions({ selectTrail: 'trails/selectTrail' }),
 	},
 };
 </script>

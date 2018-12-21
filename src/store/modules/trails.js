@@ -45,6 +45,7 @@ const actions = {
 };
 
 const trailsModule = {
+	namespaced: true,
 	state,
 	mutations,
 	actions,

@@ -12,7 +12,7 @@ export default {
 	name: 'LayerIcons',
 	props: ['icon'],
 	methods: {
-		...mapActions(['selectLayer']),
+		...mapActions({ selectLayer: 'layers/selectLayer' }),
 	},
 };
 </script>

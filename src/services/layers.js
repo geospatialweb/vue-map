@@ -30,7 +30,7 @@ export default {
 
 		case 'biosphere':
 		case 'trails':
-			events.styles.layer.setLayerStyleActive.emit('setLayerStyleActive', layer);
+			events.layerStyles.setLayerStyleActive.emit('setLayerStyleActive', layer);
 			mapService.setLayerStyleVisibility(i);
 
 			if (layers.state.layers[i].active && layer === 'trails') {

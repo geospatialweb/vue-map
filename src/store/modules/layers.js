@@ -27,6 +27,7 @@ const getters = {
 };
 
 const layersModule = {
+	namespaced: true,
 	state,
 	actions,
 	getters,

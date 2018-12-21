@@ -11,7 +11,7 @@ export default {
 	name: 'LayerElements',
 	props: ['el'],
 	methods: {
-		...mapActions(['selectLayer']),
+		...mapActions({ selectLayer: 'layers/selectLayer' }),
 	},
 };
 </script>

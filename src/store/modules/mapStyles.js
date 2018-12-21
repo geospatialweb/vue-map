@@ -14,7 +14,7 @@ const mutations = {
 const actions = {
 	getMapStyle() {
 		const mapStyle = Object.keys(state.mapStyles).find(key => state.mapStyles[key].active);
-		events.styles.map.mapStyle.emit('mapStyle', state.mapStyles[mapStyle]);
+		events.mapStyles.mapStyle.emit('mapStyle', state.mapStyles[mapStyle]);
 	},
 	setMapStyle({ commit }, name) {
 		commit('SET_MAP_STYLE', name);
@@ -30,6 +30,7 @@ const actions = {
 };
 
 const mapStylesModule = {
+	namespaced: true,
 	state,
 	actions,
 	mutations,

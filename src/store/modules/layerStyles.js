@@ -68,6 +68,7 @@ const actions = {
 };
 
 const layerStylesModule = {
+	namespaced: true,
 	state,
 	mutations,
 	actions,

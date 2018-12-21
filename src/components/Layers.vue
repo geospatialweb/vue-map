@@ -20,10 +20,10 @@ export default {
 		LayerIcons,
 	},
 	computed: {
-		...mapGetters(['icons', 'layers']),
+		...mapGetters({ icons: 'layers/icons', layers: 'layers/layers' }),
 	},
 	methods: {
-		...mapActions(['selectLayer']),
+		...mapActions({ selectLayer: 'layers/selectLayer' }),
 	},
 };
 </script>

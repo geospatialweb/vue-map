@@ -5,7 +5,7 @@ import dataService from './data';
 import eventsService from './events';
 import layerStyles from '../store/modules/layerStyles';
 import layers from '../store/modules/layers';
-import map from '../store/modules/map';
+import mapSettings from '../store/modules/mapSettings';
 import mapStyles from '../store/modules/mapStyles';
 import markers from '../store/modules/markers';
 import splashScreen from '../store/modules/splashScreen';
@@ -62,8 +62,8 @@ export default {
 	},
 
 	getMapStyle() {
-		events.styles.map.setMapStyle.emit('setMapStyle', this.mapStyle.name);
-		events.styles.map.getMapStyle.emit('getMapStyle');
+		events.mapStyles.setMapStyle.emit('setMapStyle', this.mapStyle.name);
+		events.mapStyles.getMapStyle.emit('getMapStyle');
 	},
 
 	setLayerStyleVisibility(i) {
@@ -75,7 +75,7 @@ export default {
 	},
 
 	setMapSettings() {
-		const mapSettings = {
+		const settings = {
 			bearing: this.map.getBearing(),
 			bounds: this.map.getBounds(),
 			center: this.map.getCenter(),
@@ -83,11 +83,11 @@ export default {
 			zoom: this.map.getZoom(),
 		};
 
-		if (mapSettings.bounds._ne.lat !== map.state.mapSettings.bounds._ne.lat ||
-			mapSettings.bounds._ne.lng !== map.state.mapSettings.bounds._ne.lng ||
-			mapSettings.bounds._sw.lat !== map.state.mapSettings.bounds._sw.lat ||
-			mapSettings.bounds._sw.lng !== map.state.mapSettings.bounds._sw.lng) {
-			events.styles.map.setMapSettings.emit('setMapSettings', mapSettings);
+		if (settings.bounds._ne.lat !== mapSettings.state.mapSettings.bounds._ne.lat ||
+			settings.bounds._ne.lng !== mapSettings.state.mapSettings.bounds._ne.lng ||
+			settings.bounds._sw.lat !== mapSettings.state.mapSettings.bounds._sw.lat ||
+			settings.bounds._sw.lng !== mapSettings.state.mapSettings.bounds._sw.lng) {
+			events.mapSettings.setMapSettings.emit('setMapSettings', settings);
 		}
 	},
 

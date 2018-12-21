@@ -2,7 +2,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import layers from './modules/layers';
 import layerStyles from './modules/layerStyles';
-import map from './modules/map';
+import mapSettings from './modules/mapSettings';
 import mapStyles from './modules/mapStyles';
 import markers from './modules/markers';
 import splashScreen from './modules/splashScreen';
@@ -14,7 +14,7 @@ export default new Vuex.Store({
 	modules: {
 		layers,
 		layerStyles,
-		map,
+		mapSettings,
 		mapStyles,
 		markers,
 		splashScreen,

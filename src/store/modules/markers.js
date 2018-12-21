@@ -20,7 +20,7 @@ const mutations = {
 		state.markers.push(marker);
 
 		if (state.markers.length === Object.keys(config.markers).length) {
-			this.dispatch('createMarkersHash');
+			this.dispatch('markers/createMarkersHash');
 		}
 	},
 	SET_MARKER_ACTIVE(state, marker) {
@@ -60,6 +60,10 @@ const actions = {
 		});
 	},
 
+	createMarkersHash({ commit }) {
+		commit('CREATE_MARKERS_HASH');
+	},
+
 	loadMarker({ commit }, marker) {
 		commit('LOAD_MARKER', marker);
 	},
@@ -74,6 +78,7 @@ const actions = {
 };
 
 const markersModule = {
+	namespaced: true,
 	state,
 	mutations,
 	actions,

@@ -3,9 +3,22 @@ import EventEmitter from 'events';
 export default {
 	layers: {
 		addLayerStyle: new EventEmitter(),
-		getLayerStyles: new EventEmitter(),
 		selectLayer: new EventEmitter(),
 		setLayerActive: new EventEmitter(),
+	},
+	layerStyles: {
+		getLayerStyles: new EventEmitter(),
+		setLayerStyleActive: new EventEmitter(),
+	},
+	mapSettings: {
+		getMapSettings: new EventEmitter(),
+		setMapSettings: new EventEmitter(),
+		mapSettings: new EventEmitter(),
+	},
+	mapStyles: {
+		getMapStyle: new EventEmitter(),
+		setMapStyle: new EventEmitter(),
+		mapStyle: new EventEmitter(),
 	},
 	markers: {
 		getMarkers: new EventEmitter(),
@@ -16,19 +29,6 @@ export default {
 	},
 	splashScreen: {
 		hideSplashScreen: new EventEmitter(),
-	},
-	styles: {
-		layer: {
-			setLayerStyleActive: new EventEmitter(),
-		},
-		map: {
-			getMapStyle: new EventEmitter(),
-			setMapStyle: new EventEmitter(),
-			getMapSettings: new EventEmitter(),
-			setMapSettings: new EventEmitter(),
-			mapSettings: new EventEmitter(),
-			mapStyle: new EventEmitter(),
-		},
 	},
 	trails: {
 		getTrails: new EventEmitter(),

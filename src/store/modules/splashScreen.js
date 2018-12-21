@@ -17,6 +17,7 @@ const actions = {
 };
 
 const splashScreenModule = {
+	namespaced: true,
 	state,
 	actions,
 	mutations,
