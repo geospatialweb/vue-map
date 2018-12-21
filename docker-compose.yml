@@ -4,7 +4,7 @@ services:
     container_name: vue
     #build: .  # local image build
     image: geospatialweb/vue:socketio  # docker cloud repository image
-    command: npm run server
+    command: yarn run server
     restart: always
     ports:
       - "80:80"
