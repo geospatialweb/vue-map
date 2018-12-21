@@ -4,7 +4,5 @@ module.exports = {
 		format: 'common',
 		logfile: './logs/access.log',
 	},
-	socket: {
-		event: 'geojson',
-	},
+	socket: 'markers',
 };

@@ -3,7 +3,7 @@ services:
   node:
     container_name: vue
     #build: .  # local image build
-    image: geospatialweb/vue:test  # docker cloud repository image
+    image: geospatialweb/vue:socketio  # docker cloud repository image
     command: npm run server
     restart: always
     ports:

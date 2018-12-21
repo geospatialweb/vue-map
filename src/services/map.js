@@ -30,7 +30,7 @@ export default {
 
 		this.map = new mapboxgl.Map(this.mapOptions)
 			.addControl(new mapboxgl.NavigationControl(), this.mapControls.navigationControl.position)
-			/* once layers and markers loaded, hide splash screen */
+			/* once layer styles and markers loaded, hide splash screen */
 			.on('data', () => {
 				if (layerStyles.state.layerStyles.length === Object.keys(this.layerStyles).length &&
 						markers.state.markers.length === Object.keys(this.markers).length &&
