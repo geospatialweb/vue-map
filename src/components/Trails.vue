@@ -5,15 +5,12 @@
 </template>
 
 <script>
-import { mapActions } from 'vuex';
-import config from '../config';
+import { mapActions, mapGetters } from 'vuex';
 
 export default {
 	name: 'Trails',
-	data() {
-		return {
-			trails: config.trails,
-		};
+	computed: {
+		...mapGetters({ trails: 'trails/trails' }),
 	},
 	methods: {
 		...mapActions({ selectTrail: 'trails/selectTrail' }),
@@ -28,6 +25,6 @@ select.selectTrail {
 	font-family: 'Roboto', sans-serif;
 	left: 10px;
 	top: 310px;
-	width: 132px;
+	width: 110px;
 }
 </style>

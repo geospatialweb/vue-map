@@ -11,13 +11,13 @@
 import Layers from './Layers.vue';
 import SplashScreen from './SplashScreen.vue';
 import Trails from './Trails.vue';
-import config from '../config';
+import mapService from '../services/map';
 
 export default {
 	name: 'Map',
 	data() {
 		return {
-			container: config.map.options.container,
+			container: mapService.mapOptions.container,
 		};
 	},
 	components: {

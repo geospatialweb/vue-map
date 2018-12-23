@@ -29,10 +29,10 @@ div.headerContainer {
 
 	img.logo {
 		margin: 0;
-		padding: 3px 0 0 5px;
+		padding: 6px 0 0 8px;
 		float: left;
-		height: 40px;
-		width: 40px;
+		height: 35px;
+		width: 35x;
 	}
 
 	div.company {

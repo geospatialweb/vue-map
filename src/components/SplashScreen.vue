@@ -3,14 +3,12 @@
 </template>
 
 <script>
-import config from '../config';
+import { mapGetters } from 'vuex';
 
 export default {
 	name: 'SplashScreen',
-	data() {
-		return {
-			splashScreen: config.splashScreen,
-		};
+	computed: {
+		...mapGetters({ splashScreen: 'splashScreen/splashScreen' }),
 	},
 };
 </script>

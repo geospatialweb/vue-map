@@ -44,11 +44,16 @@ const actions = {
 	},
 };
 
+const getters = {
+	trails: state => state.trails,
+};
+
 const trailsModule = {
 	namespaced: true,
 	state,
 	mutations,
 	actions,
+	getters,
 };
 
 export default trailsModule;

@@ -4,7 +4,7 @@ export default {
 			name: 'Geospatial Web',
 		},
 		logo: {
-			src: '../assets/logo.png',
+			src: './assets/logo.png',
 		},
 		repo: {
 			name: 'GitHub Repository',
@@ -68,16 +68,20 @@ export default {
 	},
 	layers: [
 		{
-			name: 'Aerial View',
+			name: 'Satellite View',
 			active: false,
-			class: 'aerial',
+			class: 'satellite',
+			icon: 'satellite-icon',
+			src: './assets/satellite.png',
+			height: '20',
+			width: '20',
 		},
 		{
 			name: 'Biosphere',
 			active: true,
 			class: 'biosphere',
 			icon: 'biosphere-icon',
-			src: '../assets/biosphere.png',
+			src: './assets/biosphere.png',
 			height: '18',
 			width: '18',
 		},
@@ -86,7 +90,7 @@ export default {
 			active: false,
 			class: 'office',
 			icon: 'office-icon',
-			src: '../assets/office.png',
+			src: './assets/office.png',
 			height: '20',
 			width: '18',
 		},
@@ -95,7 +99,7 @@ export default {
 			active: false,
 			class: 'places',
 			icon: 'places-icon',
-			src: '../assets/places.png',
+			src: './assets/places.png',
 			height: '20',
 			width: '18',
 		},
@@ -104,7 +108,7 @@ export default {
 			active: false,
 			class: 'trails',
 			icon: 'trails-icon',
-			src: '../assets/trails.png',
+			src: './assets/trails.png',
 			height: '20',
 			width: '18',
 		},
@@ -179,7 +183,7 @@ export default {
 	},
 	socket: {
 		socket: 'markers',
-		url: 'http://localhost',
+		url: 'localhost',
 	},
 	splashScreen: {
 		active: true,

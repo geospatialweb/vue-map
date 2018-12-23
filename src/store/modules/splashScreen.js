@@ -16,11 +16,16 @@ const actions = {
 	},
 };
 
+const getters = {
+	splashScreen: state => state.splashScreen,
+};
+
 const splashScreenModule = {
 	namespaced: true,
 	state,
 	actions,
 	mutations,
+	getters,
 };
 
 export default splashScreenModule;

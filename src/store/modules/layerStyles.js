@@ -37,7 +37,7 @@ const actions = {
 				table: config.layerStyles[key].name,
 			};
 
-			const subscription = Axios.get('/geojson', { params })
+			const subscription = Axios.get('/api/geojson', { params })
 				.subscribe((res) => {
 					if (res.data) {
 						const layerStyle = config.layerStyles[key].layer;

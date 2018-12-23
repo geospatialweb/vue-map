@@ -6,15 +6,13 @@ const http = require('http');
 const morgan = require('morgan');
 const path = require('path');
 const socketio = require('socket.io');
-
-const app = express();
-
 const config = require('./config');
 const markers = require('./modules');
+const routes = require('./routes');
 
-app
+const app = express()
 	.use(express.static(path.resolve(process.env.PUBLIC_ROOT)))
-	.use('/geojson', require('./routes'))
+	.use('/api/geojson', routes)
 	.use(morgan(config.morgan.format, {
 		stream: fs.createWriteStream(path.resolve(config.morgan.logfile), {
 			flags: config.morgan.flags,
@@ -23,15 +21,14 @@ app
 
 	.set('env', process.env.NODE_ENV)
 	.set('host', process.env.HOST)
-	.set('port', process.env.PORT || 80)
-	.set('timeout', process.env.TIMEOUT);
+	.set('port', process.env.PORT || 3000);
 
 const server = http.createServer(app)
 	.listen(process.env.PORT, process.env.HOST, (err) => {
 		err ?
 			console.error('Server Failed:\n', err) :
 
-			console.log(`Active on http://${process.env.LOCALHOST}:${process.env.PORT} at ` +
+			console.log(`Active on http://localhost:${process.env.PORT} at ` +
                 `${new Date().toDateString()} ${new Date().toTimeString()}`);
 	});
 

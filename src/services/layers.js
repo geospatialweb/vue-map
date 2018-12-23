@@ -19,7 +19,7 @@ export default {
 
 	setLayer(layer, i) {
 		switch (layer) {
-		case 'aerial':
+		case 'satellite':
 			/* toggle between 'outdoors' and 'satellite' map styles (basemaps) */
 			mapService.setMapStyle();
 			/* hide active markers when changing map styles for aesthetic purposes */

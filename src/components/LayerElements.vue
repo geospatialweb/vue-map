@@ -52,7 +52,7 @@ div ul.layers li {
 		font-family: 'Roboto', sans-serif;
 		font-size: 0.95em;
 		text-decoration: none;
-		width: 90px;
+		width: 95px;
 
 		&:hover {
 			background: $hover-background-color;

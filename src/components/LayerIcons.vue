@@ -19,13 +19,18 @@ export default {
 
 <style lang='scss' scoped>
 div {
+	div.satellite-icon {
+		position: absolute;
+		cursor: pointer;
+		left: 21px;
+		top: 126px;
+	}
+
 	div.biosphere-icon {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
 		top: 155px;
-		height: 18px;
-		width: 18px;
 	}
 
 	div.office-icon {
@@ -33,8 +38,6 @@ div {
 		cursor: pointer;
 		left: 22px;
 		top: 183px;
-		height: 20px;
-		width: 18px;
 	}
 
 	div.places-icon {
@@ -42,8 +45,6 @@ div {
 		cursor: pointer;
 		left: 22px;
 		top:212px;
-		height: 20px;
-		width: 18px;
 	}
 
 	div.trails-icon {
@@ -51,8 +52,6 @@ div {
 		cursor: pointer;
 		left: 22px;
 		top: 241px;
-		height: 20px;
-		width: 18px;
 	}
 }
 </style>

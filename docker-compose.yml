@@ -3,11 +3,11 @@ services:
   node:
     container_name: vue
     #build: .  # local image build
-    image: geospatialweb/vue:socketio  # docker cloud repository image
-    command: yarn run server
+    image: geospatialweb/vue:latest  # docker cloud repository image
+    command: yarn server
     restart: always
     ports:
-      - "80:80"
+      - "80:3000"
     volumes:
       - ./usr/src/app
     environment:
