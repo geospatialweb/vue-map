@@ -10,7 +10,7 @@
         "url": "https://github.com/geospatialweb/vue-map.git"
     },
     "scripts": {
-        "server": "node server",
+        "server": "nodemon server",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
@@ -23,6 +23,7 @@
         "express": "^4.16.4",
         "mapbox-gl": "^0.52.0",
         "morgan": "^1.9.1",
+        "nodemon": "^1.18.9",
         "path": "^0.12.7",
         "pg": "^7.7.1",
         "rxjs": "^6.3.3",
