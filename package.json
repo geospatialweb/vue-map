@@ -3,14 +3,14 @@
     "version": "2.0.0",
     "license": "MIT",
     "author": "John Campbell <johncampbell@geospatialweb.ca> <http://www.linkedin.com/in/geospatialweb>",
-    "description": "Node, Express, Vue, Vuex, Socket.IO, Mapbox GL, PostGIS, Docker Web Mapping",
+    "description": "Node, Express, Vue, Vuex, Mapbox GL, PostGIS, Docker Web Mapping",
     "private": true,
     "repository": {
         "type": "git",
         "url": "https://github.com/geospatialweb/vue-map.git"
     },
     "scripts": {
-        "server": "nodemon server",
+        "server": "node server",
         "serve": "vue-cli-service serve",
         "build": "vue-cli-service build",
         "lint": "vue-cli-service lint"
@@ -23,7 +23,6 @@
         "express": "^4.16.4",
         "mapbox-gl": "^0.52.0",
         "morgan": "^1.9.1",
-        "nodemon": "^1.18.9",
         "path": "^0.12.7",
         "pg": "^7.7.1",
         "rxjs": "^6.3.3",
@@ -38,7 +37,7 @@
         "@vue/cli-service": "^3.2.0",
         "@vue/eslint-config-airbnb": "^4.0.0",
         "babel-eslint": "^10.0.1",
-        "eslint": "^5.10.0",
+        "eslint": "^5.11.0",
         "eslint-plugin-vue": "^5.0.0",
         "node-sass": "^4.11.0",
         "sass-loader": "^7.1.0",
