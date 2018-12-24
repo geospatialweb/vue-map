@@ -9,7 +9,8 @@ export default {
 		const trail = event.target.value;
 		const i = trails.state.trails.findIndex(obj => obj.name === trail);
 
-		if (trail !== trails.state.trails[0].name) {
+		/* exclude 'Select Trail' */
+		if (i > 0) {
 			events.trails.setTrailActive.emit('setTrailActive', i);
 			this.setTrail(trail);
 		}

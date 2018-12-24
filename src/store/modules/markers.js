@@ -34,20 +34,18 @@ const mutations = {
 const actions = {
 	getMarkers() {
 		Object.keys(config.markers).map((key) => {
-			const socket = io(config.socket.url);
-
 			const params = {
 				fields: config.markers[key].fields,
 				table: config.markers[key].name,
 			};
 
-			socket.emit(config.socket.socket, params);
-
-			socket.on(params.table, (geojson) => {
-				geojson ?
-					events.markers.setMarker.emit('setMarker', config.markers[key], geojson) :
-					console.error('Data Error:\n', geojson);
-			});
+			io(config.socket.url)
+				.emit(config.socket.socket, params)
+				.on(params.table, (geojson) => {
+					geojson ?
+						events.markers.setMarker.emit('setMarker', config.markers[key], geojson) :
+						console.error('Data Error:\n', geojson);
+				});
 
 			return true;
 		});
