@@ -2,8 +2,8 @@ version: '3.5'
 services:
   node:
     container_name: vue
-    build: .  # local image build
-    #image: geospatialweb/vue:latest  # docker cloud repository image
+    #build: .  # local image build
+    image: geospatialweb/vue:latest  # docker cloud repository image
     command: yarn server
     restart: always
     ports:
