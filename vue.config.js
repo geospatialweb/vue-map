@@ -2,7 +2,7 @@ module.exports = {
 	devServer: {
 		proxy: {
 			'/geojson': {
-				target: 'http://localhost:3000',
+				target: 'http://localhost',
 			},
 		},
 	},
