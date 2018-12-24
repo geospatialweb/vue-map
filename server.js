@@ -21,7 +21,7 @@ const app = express()
 
 	.set('env', process.env.NODE_ENV)
 	.set('host', process.env.HOST)
-	.set('port', process.env.PORT || 3000);
+	.set('port', process.env.PORT || 80);
 
 const server = http.createServer(app)
 	.listen(process.env.PORT, process.env.HOST, (err) => {
