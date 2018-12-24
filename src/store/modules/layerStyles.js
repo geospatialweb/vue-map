@@ -31,16 +31,18 @@ const mutations = {
 
 const actions = {
 	getLayerStyles({ commit }) {
-		Object.keys(config.layerStyles).map((key) => {
+		const { layerStyles } = config;
+
+		Object.keys(layerStyles).map((key) => {
 			const params = {
-				fields: config.layerStyles[key].fields,
-				table: config.layerStyles[key].name,
+				fields: layerStyles[key].fields,
+				table: layerStyles[key].name,
 			};
 
 			const subscription = Axios.get('/api/geojson', { params })
 				.subscribe((res) => {
 					if (res.data) {
-						const layerStyle = config.layerStyles[key].layer;
+						const layerStyle = layerStyles[key].layer;
 						layerStyle.source.data = res.data;
 
 						commit('LOAD_LAYERSTYLE', layerStyle);
@@ -52,7 +54,7 @@ const actions = {
 					console.error('Query Failed:\n', err.error);
 				},
 				() => {
-					if (state.layerStyles.length === Object.keys(config.layerStyles).length) {
+					if (state.layerStyles.length === Object.keys(layerStyles).length) {
 						commit('CREATE_LAYERSTYLES_HASH');
 					}
 
