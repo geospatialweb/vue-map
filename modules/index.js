@@ -2,7 +2,7 @@ const { Pool } = require('pg');
 const config = require('../config');
 
 module.exports = (socket) => {
-	socket.on(config.socket, (params) => {
+	socket.on(config.socket.event, (params) => {
 		const query = 'SELECT row_to_json(fc) ' +
 			'FROM (SELECT \'FeatureCollection\' As type, array_to_json(array_agg(f)) As features ' +
 			'FROM (SELECT\'Feature\' As type, ' +

@@ -4,5 +4,7 @@ module.exports = {
 		format: 'common',
 		logfile: './logs/server.log',
 	},
-	socket: 'markers',
+	socket: {
+		event: 'markers',
+	},
 };

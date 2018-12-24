@@ -182,7 +182,7 @@ export default {
 		},
 	},
 	socket: {
-		socket: 'markers',
+		event: 'markers',
 		url: 'localhost',
 	},
 	splashScreen: {

@@ -40,7 +40,7 @@ const actions = {
 			};
 
 			io(config.socket.url)
-				.emit(config.socket.socket, params)
+				.emit(config.socket.event, params)
 				.on(params.table, (geojson) => {
 					geojson ?
 						events.markers.setMarker.emit('setMarker', config.markers[key], geojson) :
