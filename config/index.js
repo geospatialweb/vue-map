@@ -2,7 +2,7 @@ module.exports = {
 	morgan: {
 		flags: 'a',
 		format: 'common',
-		logfile: './logs/access.log',
+		logfile: './logs/server.log',
 	},
 	socket: 'markers',
 };
