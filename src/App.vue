@@ -32,6 +32,11 @@ export default {
 		events.trails.setTrailActive.on('setTrailActive', i => this.$store.dispatch('trails/setTrailActive', i));
 		events.trails.getTrails.on('getTrails', () => this.$store.dispatch('trails/getTrails'));
 	},
+	mounted() {
+		/* eslint-disable-next-line global-require */
+		require('./services/events').default.setEvents();
+		events.map.loadMap.emit('loadMap');
+	},
 };
 </script>
 

@@ -2,7 +2,6 @@ import mapboxgl from 'mapbox-gl';
 import config from '../config';
 import events from '../events';
 import dataService from './data';
-import eventsService from './events';
 import layerStyles from '../store/modules/layerStyles';
 import layers from '../store/modules/layers';
 import mapSettings from '../store/modules/mapSettings';
@@ -40,7 +39,6 @@ export default {
 			})
 			.on('load', () => {
 				this.addHillShading();
-				eventsService.setEvents();
 				dataService.getData();
 			})
 			.on('render', () => {

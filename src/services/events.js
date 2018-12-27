@@ -8,6 +8,7 @@ export default {
 	setEvents() {
 		events.layers.addLayerStyle.on('addLayerStyle', layerStyle => mapService.addLayerStyle(layerStyle));
 		events.layers.selectLayer.on('selectLayer', event => layersService.selectLayer(event));
+		events.map.loadMap.on('loadMap', () => mapService.loadMap());
 		events.mapSettings.mapSettings.on('mapSettings', (mapSettings) => {
 			mapService.mapSettings = mapSettings;
 			return true;

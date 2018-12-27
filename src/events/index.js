@@ -10,6 +10,9 @@ export default {
 		getLayerStyles: new EventEmitter(),
 		setLayerStyleActive: new EventEmitter(),
 	},
+	map: {
+		loadMap: new EventEmitter(),
+	},
 	mapSettings: {
 		getMapSettings: new EventEmitter(),
 		setMapSettings: new EventEmitter(),
