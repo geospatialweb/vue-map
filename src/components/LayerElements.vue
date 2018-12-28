@@ -43,7 +43,7 @@ div ul.layers li {
 
 	div {
 		display: block;
-		padding: 5px 0 5px 40px;
+		padding: 6px 0 5px 40px;
 		background: $primary-background-color;
 		border: 1px solid rgb(187,187,187);
 		border-bottom-width: 0;
@@ -52,7 +52,7 @@ div ul.layers li {
 		font-family: 'Roboto', sans-serif;
 		font-size: 0.95em;
 		text-decoration: none;
-		width: 95px;
+		width: 85px;
 
 		&:hover {
 			background: $hover-background-color;

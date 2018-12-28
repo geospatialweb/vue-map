@@ -11,7 +11,7 @@ export default {
 			src: 'https://github.com/geospatialweb/vue-map',
 		},
 		title: {
-			name: 'Node | Express | Vue | Vuex | Mapbox GL | PostGIS | Docker',
+			name: 'Node | Express | Vue | Vuex | Mapbox GL | Deck GL | PostGIS | Docker',
 		},
 	},
 	hillshade: {
@@ -68,7 +68,7 @@ export default {
 	},
 	layers: [
 		{
-			name: 'Satellite View',
+			name: 'Satellite',
 			active: false,
 			class: 'satellite',
 			icon: 'satellite-icon',
@@ -82,8 +82,8 @@ export default {
 			class: 'biosphere',
 			icon: 'biosphere-icon',
 			src: './assets/biosphere.png',
-			height: '18',
-			width: '18',
+			height: '17',
+			width: '17',
 		},
 		{
 			name: 'Office',
@@ -113,8 +113,13 @@ export default {
 			width: '18',
 		},
 		{
-			name: 'Reset Map',
-			class: 'reset',
+			name: 'Deck GL',
+			active: false,
+			class: 'deckgl',
+			icon: 'uber-icon',
+			src: './assets/uber.png',
+			height: '18',
+			width: '18',
 		},
 	],
 	map: {
@@ -127,6 +132,8 @@ export default {
 		options: {
 			center: [-76.3, 44.45],
 			container: 'map',
+			minZoom: 2,
+			maxZoom: 15,
 			zoom: 9,
 		},
 		settings: {

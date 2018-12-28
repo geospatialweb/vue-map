@@ -18,6 +18,8 @@ export default {
 		center: config.map.options.center,
 		container: config.map.options.container,
 		style: mapStyles.state.mapStyles.outdoors.url,
+		minZoom: config.map.options.minZoom,
+		maxZoom: config.map.options.maxZoom,
 		zoom: config.map.options.zoom,
 	},
 	mapStyle: mapStyles.state.mapStyles.outdoors,

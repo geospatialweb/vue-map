@@ -25,6 +25,6 @@ select.selectTrail {
 	font-family: 'Roboto', sans-serif;
 	left: 10px;
 	top: 310px;
-	width: 110px;
+	width: 126px;
 }
 </style>

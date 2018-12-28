@@ -4,7 +4,7 @@
 			<LayerElements v-for='layer in layers' :key='layer.class' :el='layer' @click='selectLayer' />
 		</ul>
 
-		<LayerIcons v-for='icon in icons' :key='icon.class' :icon='icon' @click='selectLayer' />
+		<LayerIcons v-for='layer in layers' :key='layer.class' :icon='layer' @click='selectLayer' />
 	</div>
 </template>
 
@@ -20,7 +20,7 @@ export default {
 		LayerIcons,
 	},
 	computed: {
-		...mapGetters({ icons: 'layers/icons', layers: 'layers/layers' }),
+		...mapGetters({ layers: 'layers/layers' }),
 	},
 	methods: {
 		...mapActions({ selectLayer: 'layers/selectLayer' }),

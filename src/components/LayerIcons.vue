@@ -30,28 +30,35 @@ div {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
-		top: 155px;
+		top: 157px;
 	}
 
 	div.office-icon {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
-		top: 183px;
+		top: 185px;
 	}
 
 	div.places-icon {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
-		top:212px;
+		top: 216px;
 	}
 
 	div.trails-icon {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
-		top: 241px;
+		top: 246px;
+	}
+
+	div.uber-icon {
+		position: absolute;
+		cursor: pointer;
+		left: 22px;
+		top: 276px;
 	}
 }
 </style>

@@ -22,7 +22,6 @@ const actions = {
 };
 
 const getters = {
-	icons: state => state.layers.filter(layer => layer.icon),
 	layers: state => state.layers,
 };
 

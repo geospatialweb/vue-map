@@ -1,5 +1,6 @@
 import events from '../events';
 import layers from '../store/modules/layers';
+import deckGlService from './deckgl';
 import mapService from './map';
 import markerDisplayService from './markerDisplay';
 
@@ -50,9 +51,12 @@ export default {
 				markerDisplayService.removeMarkers(layer);
 			break;
 
+		case 'deckgl':
+			/* load deck.gl HexagonLayer heatmap */
+			deckGlService.loadHeatmap();
+			break;
+
 		default:
-			/* refresh app */
-			window.location.reload(true);
 		}
 	},
 };
