@@ -1,7 +1,8 @@
 import mapboxgl from 'mapbox-gl';
-import config from '../config';
+import config from '../config/index.json';
 import events from '../events';
 import dataService from './data';
+import deckGlService from './deckgl';
 import layerStyles from '../store/modules/layerStyles';
 import layers from '../store/modules/layers';
 import mapSettings from '../store/modules/mapSettings';
@@ -11,6 +12,7 @@ import splashScreen from '../store/modules/splashScreen';
 
 export default {
 	accessToken: config.map.accessToken,
+	heatmap: config.heatmap,
 	hillshade: config.hillshade,
 	layerStyles: config.layerStyles,
 	mapControls: config.map.controls,
@@ -48,6 +50,28 @@ export default {
 			});
 	},
 
+	addHeatmapLayer() {
+		if (!deckGlService.layer.active) {
+			this.map.currentBearing = mapSettings.state.mapSettings.bearing;
+			this.map.currentCenter = mapSettings.state.mapSettings.center;
+			this.map.currentMapStyle = this.mapStyle;
+			this.map.currentPitch = mapSettings.state.mapSettings.pitch;
+			this.map.currentZoom = mapSettings.state.mapSettings.zoom;
+
+			this.map.setBearing(this.heatmap.bearing);
+			this.map.setCenter(this.heatmap.center);
+			this.map.setPitch(this.heatmap.pitch);
+			this.map.setZoom(this.heatmap.zoom);
+		}
+
+		// if (this.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
+		// this.setMapStyle();
+		// }
+
+		deckGlService.setHeatmapActive();
+		setTimeout(() => this.map.addLayer(deckGlService.layer), 500);
+	},
+
 	/* add hillshading to 'outdoors' map style */
 	addHillShading() {
 		this.addLayerStyle(this.hillshade, this.hillshade.index);
@@ -64,6 +88,22 @@ export default {
 	getMapStyle() {
 		events.mapStyles.setMapStyle.emit('setMapStyle', this.mapStyle.name);
 		events.mapStyles.getMapStyle.emit('getMapStyle');
+	},
+
+	removeHeatmapLayer() {
+		if (!deckGlService.layer.active) {
+			this.map.setBearing(this.map.currentBearing);
+			this.map.setCenter(this.map.currentCenter);
+			this.map.setPitch(this.map.currentPitch);
+			this.map.setZoom(this.map.currentZoom);
+		}
+
+		// if (this.mapStyle.name !== this.map.currentMapStyle.name) {
+		// this.setMapStyle();
+		// }
+
+		deckGlService.setHeatmapActive();
+		this.map.removeLayer(deckGlService.layer.id);
 	},
 
 	setLayerStyleVisibility(i) {

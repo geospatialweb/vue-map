@@ -1,4 +1,4 @@
-import config from '../../config';
+import config from '../../config/index.json';
 
 const state = {
 	splashScreen: config.splashScreen,
