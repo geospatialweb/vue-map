@@ -15,7 +15,6 @@ export default {
 		});
 		events.mapStyles.mapStyle.on('mapStyle', (mapStyle) => {
 			mapService.mapStyle = mapStyle;
-			// mapService.map.currentMapStyle = mapService.mapStyle;
 			return true;
 		});
 		events.markers.setMarker.on('setMarker', (marker, data) => markersService.setMarker(marker, data));

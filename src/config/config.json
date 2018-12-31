@@ -15,8 +15,10 @@
 		}
 	},
 	"heatmap": {
+		"active": false,
 		"bearing": -27.3967,
 		"center": [-1.4157, 52.2324],
+		"coverage": 1,
 		"data_url": "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
 		"colour_range": [
 			[1, 152, 189],
@@ -26,6 +28,10 @@
 			[254, 173, 84],
 			[209, 55, 78]
 		],
+		"elevationRange": [0, 1000],
+		"elevationScale": 250,
+		"extruded": true,
+		"id": "heatmap",
 		"light_settings": {
 			"lightsPosition": [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
 			"ambientRatio": 0.4,
@@ -34,7 +40,10 @@
 			"lightsStrength": [0.8, 0.0, 0.8, 0.0],
 			"numberOfLights": 2
 		},
+		"opacity": 1,
 		"pitch": 45,
+		"radius": 1000,
+		"upperPercentile": 100,
 		"zoom": 6
 	},
 	"hillshade": {
@@ -137,7 +146,7 @@
 		{
 			"name": "Deck GL",
 			"active": false,
-			"class": "deckgl",
+			"class": "heatmap",
 			"icon": "uber-icon",
 			"src": "./assets/uber.png",
 			"height": "18",

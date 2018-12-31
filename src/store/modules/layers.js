@@ -1,4 +1,4 @@
-import config from '../../config/index.json';
+import config from '../../config/config.json';
 import events from '../../events';
 
 const state = {

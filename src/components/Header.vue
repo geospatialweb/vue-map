@@ -8,7 +8,7 @@
 </template>
 
 <script>
-import config from '../config/index.json';
+import config from '../config/config.json';
 
 export default {
 	name: 'Header',

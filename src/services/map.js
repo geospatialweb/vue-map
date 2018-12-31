@@ -1,8 +1,9 @@
 import mapboxgl from 'mapbox-gl';
-import config from '../config/index.json';
+import config from '../config/config.json';
 import events from '../events';
 import dataService from './data';
 import deckGlService from './deckgl';
+import layersService from './layers';
 import layerStyles from '../store/modules/layerStyles';
 import layers from '../store/modules/layers';
 import mapSettings from '../store/modules/mapSettings';
@@ -42,7 +43,7 @@ export default {
 				}
 			})
 			.on('load', () => {
-				this.addHillShading();
+				// this.addHillShading();
 				dataService.getData();
 			})
 			.on('render', () => {
@@ -50,26 +51,9 @@ export default {
 			});
 	},
 
-	addHeatmapLayer() {
-		if (!deckGlService.layer.active) {
-			this.map.currentBearing = mapSettings.state.mapSettings.bearing;
-			this.map.currentCenter = mapSettings.state.mapSettings.center;
-			this.map.currentMapStyle = this.mapStyle;
-			this.map.currentPitch = mapSettings.state.mapSettings.pitch;
-			this.map.currentZoom = mapSettings.state.mapSettings.zoom;
-
-			this.map.setBearing(this.heatmap.bearing);
-			this.map.setCenter(this.heatmap.center);
-			this.map.setPitch(this.heatmap.pitch);
-			this.map.setZoom(this.heatmap.zoom);
-		}
-
-		// if (this.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
-		// this.setMapStyle();
-		// }
-
-		deckGlService.setHeatmapActive();
-		setTimeout(() => this.map.addLayer(deckGlService.layer), 500);
+	addHeatmap(heatmap) {
+		this.addLayerStyle(heatmap);
+		this.map.setLayoutProperty(heatmap.id, 'visibility', 'none');
 	},
 
 	/* add hillshading to 'outdoors' map style */
@@ -85,25 +69,47 @@ export default {
 		this.map.addLayer(layerStyle, index);
 	},
 
+	displayHeatmap() {
+		const i = layers.state.layers.findIndex(obj => obj.class === 'satellite');
+
+		deckGlService.setHeatmapActive();
+
+		if (deckGlService.heatmap.props.active) {
+			this.map.bearing = mapSettings.state.mapSettings.bearing;
+			this.map.center = mapSettings.state.mapSettings.center;
+			this.map.pitch = mapSettings.state.mapSettings.pitch;
+			this.map.mapStyle = this.mapStyle;
+			this.map.zoom = mapSettings.state.mapSettings.zoom;
+
+			this.map.setBearing(this.heatmap.bearing);
+			this.map.setCenter(this.heatmap.center);
+			this.map.setPitch(this.heatmap.pitch);
+			this.map.setZoom(this.heatmap.zoom);
+
+			if (this.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
+				events.layers.setLayerActive.emit('setLayerActive', i);
+				layersService.setLayer(layers.state.layers[i].class, i);
+			} else {
+				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'visible');
+			}
+		} else {
+			this.map.setBearing(this.map.bearing);
+			this.map.setCenter(this.map.center);
+			this.map.setPitch(this.map.pitch);
+			this.map.setZoom(this.map.zoom);
+
+			if (this.mapStyle.name !== this.map.mapStyle.name) {
+				events.layers.setLayerActive.emit('setLayerActive', i);
+				layersService.setLayer(layers.state.layers[i].class, i);
+			} else {
+				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'none');
+			}
+		}
+	},
+
 	getMapStyle() {
 		events.mapStyles.setMapStyle.emit('setMapStyle', this.mapStyle.name);
 		events.mapStyles.getMapStyle.emit('getMapStyle');
-	},
-
-	removeHeatmapLayer() {
-		if (!deckGlService.layer.active) {
-			this.map.setBearing(this.map.currentBearing);
-			this.map.setCenter(this.map.currentCenter);
-			this.map.setPitch(this.map.currentPitch);
-			this.map.setZoom(this.map.currentZoom);
-		}
-
-		// if (this.mapStyle.name !== this.map.currentMapStyle.name) {
-		// this.setMapStyle();
-		// }
-
-		deckGlService.setHeatmapActive();
-		this.map.removeLayer(deckGlService.layer.id);
 	},
 
 	setLayerStyleVisibility(i) {
@@ -139,6 +145,12 @@ export default {
 		setTimeout(() => {
 			if (this.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
 				this.addHillShading();
+			}
+
+			this.addLayerStyle(deckGlService.heatmap);
+
+			if (!deckGlService.heatmap.props.active) {
+				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'none');
 			}
 
 			layerStyles.state.layerStyles.map((layerStyle) => {
