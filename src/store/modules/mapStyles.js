@@ -6,7 +6,7 @@ const state = {
 };
 
 const mutations = {
-	SET_MAP_STYLE(state, name) {
+	SET_MAPSTYLE_ACTIVE(state, name) {
 		state.mapStyles[name].active = !state.mapStyles[name].active;
 	},
 };
@@ -17,7 +17,7 @@ const actions = {
 		events.mapStyles.mapStyle.emit('mapStyle', state.mapStyles[mapStyle]);
 	},
 	setMapStyle({ commit }, name) {
-		commit('SET_MAP_STYLE', name);
+		commit('SET_MAPSTYLE_ACTIVE', name);
 
 		let mapStyleName;
 
@@ -25,15 +25,15 @@ const actions = {
 			mapStyleName = state.mapStyles.satellite.name :
 			mapStyleName = state.mapStyles.outdoors.name;
 
-		commit('SET_MAP_STYLE', mapStyleName);
+		commit('SET_MAPSTYLE_ACTIVE', mapStyleName);
 	},
 };
 
 const mapStylesModule = {
 	namespaced: true,
 	state,
-	actions,
 	mutations,
+	actions,
 };
 
 export default mapStylesModule;

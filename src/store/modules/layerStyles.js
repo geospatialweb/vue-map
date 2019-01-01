@@ -1,6 +1,5 @@
 import { Axios } from 'axios-observable';
 import config from '../../config/config.json';
-// import deckGlService from '../../services/deckgl';
 import events from '../../events';
 
 const state = {
@@ -17,10 +16,7 @@ const mutations = {
 	},
 	LOAD_LAYERSTYLE(state, layerStyle) {
 		state.layerStyles.push(layerStyle);
-
-		// if (layerStyle.id !== state.layerStyles[0].id) {
-		events.layers.addLayerStyle.emit('addLayerStyle', layerStyle);
-		// }
+		events.layerStyles.addLayerStyle.emit('addLayerStyle', layerStyle);
 	},
 	SET_LAYERSTYLE_ACTIVE(state, name) {
 		const i = state.layerStylesHash[name];
@@ -37,13 +33,10 @@ const actions = {
 	getLayerStyles({ commit }) {
 		const { layerStyles } = config;
 
-		// deckGlService.setHeatmap();
-		// commit('LOAD_LAYERSTYLE', deckGlService.layerStyle);
-
 		Object.keys(layerStyles).map((key) => {
 			const params = {
 				fields: layerStyles[key].fields,
-				table: layerStyles[key].name,
+				table: layerStyles[key].layer.id,
 			};
 
 			const subscription = Axios.get('/api/geojson', { params })

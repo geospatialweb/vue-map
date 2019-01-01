@@ -21,10 +21,10 @@ export default {
 <style lang='scss' scoped>
 select.selectTrail {
 	position: absolute;
-	border-style: none;
+	border-style: solid;
 	font-family: 'Roboto', sans-serif;
 	left: 10px;
-	top: 310px;
+	top: 315px;
 	width: 126px;
 }
 </style>

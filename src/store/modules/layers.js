@@ -28,9 +28,9 @@ const getters = {
 const layersModule = {
 	namespaced: true,
 	state,
+	mutations,
 	actions,
 	getters,
-	mutations,
 };
 
 export default layersModule;

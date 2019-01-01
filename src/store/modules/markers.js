@@ -34,7 +34,7 @@ const actions = {
 		Object.keys(markers).map((key) => {
 			const params = {
 				fields: markers[key].fields,
-				table: markers[key].name,
+				table: markers[key].id,
 			};
 
 			const subscription = Axios.get('/api/geojson', { params })

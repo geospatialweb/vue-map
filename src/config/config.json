@@ -16,10 +16,6 @@
 	},
 	"heatmap": {
 		"active": false,
-		"bearing": -27.3967,
-		"center": [-1.4157, 52.2324],
-		"coverage": 1,
-		"data_url": "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
 		"colour_range": [
 			[1, 152, 189],
 			[73, 227, 206],
@@ -28,23 +24,29 @@
 			[254, 173, 84],
 			[209, 55, 78]
 		],
+		"coverage": 1,
+		"data_url": "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
 		"elevationRange": [0, 1000],
 		"elevationScale": 250,
 		"extruded": true,
 		"id": "heatmap",
 		"light_settings": {
-			"lightsPosition": [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
 			"ambientRatio": 0.4,
 			"diffuseRatio": 0.6,
-			"specularRatio": 0.2,
+			"lightsPosition": [-0.144528, 49.739968, 8000, -3.807751, 54.104682, 8000],
 			"lightsStrength": [0.8, 0.0, 0.8, 0.0],
-			"numberOfLights": 2
+			"numberOfLights": 2,
+			"specularRatio": 0.2
 		},
 		"opacity": 1,
-		"pitch": 45,
 		"radius": 1000,
-		"upperPercentile": 100,
-		"zoom": 6
+		"settings": {
+			"bearing": -30,
+			"center": [-2.0, 52.0],
+			"pitch": 50,
+			"zoom": 6.5
+		},
+		"upperPercentile": 100
 	},
 	"hillshade": {
 		"id": "hillshading",
@@ -58,7 +60,6 @@
 	},
 	"layerStyles": {
 		"biosphere": {
-			"name": "biosphere",
 			"fields": "name, description, ST_AsGeoJSON(geom)",
 			"layer": {
 				"id": "biosphere",
@@ -78,7 +79,6 @@
 			}
 		},
 		"trails": {
-			"name": "trails",
 			"fields": "name, description, lat, lng, ST_AsGeoJSON(geom)",
 			"layer": {
 				"id": "trails",
@@ -200,19 +200,19 @@
 	},
 	"markers": {
 		"office": {
-			"name": "office",
+			"id": "office",
 			"active": false,
 			"fields": "name, description, ST_AsGeoJSON(geom)",
 			"hidden": false
 		},
 		"places": {
-			"name": "places",
+			"id": "places",
 			"active": false,
 			"fields": "name, description, ST_AsGeoJSON(geom)",
 			"hidden": false
 		},
 		"trails": {
-			"name": "trails",
+			"id": "trails",
 			"active": false,
 			"fields": "name, description, lat, lng, ST_AsGeoJSON(geom)",
 			"hidden": false

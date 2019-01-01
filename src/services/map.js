@@ -1,8 +1,9 @@
 import mapboxgl from 'mapbox-gl';
 import config from '../config/config.json';
-import events from '../events';
 import dataService from './data';
 import deckGlService from './deckgl';
+import events from '../events';
+import heatmap from '../store/modules/heatmap';
 import layersService from './layers';
 import layerStyles from '../store/modules/layerStyles';
 import layers from '../store/modules/layers';
@@ -13,7 +14,7 @@ import splashScreen from '../store/modules/splashScreen';
 
 export default {
 	accessToken: config.map.accessToken,
-	heatmap: config.heatmap,
+	heatmap: config.heatmap.settings,
 	hillshade: config.hillshade,
 	layerStyles: config.layerStyles,
 	mapControls: config.map.controls,
@@ -43,17 +44,12 @@ export default {
 				}
 			})
 			.on('load', () => {
-				// this.addHillShading();
+				this.addHillShading();
 				dataService.getData();
 			})
 			.on('render', () => {
 				this.setMapSettings();
 			});
-	},
-
-	addHeatmap(heatmap) {
-		this.addLayerStyle(heatmap);
-		this.map.setLayoutProperty(heatmap.id, 'visibility', 'none');
 	},
 
 	/* add hillshading to 'outdoors' map style */
@@ -67,14 +63,18 @@ export default {
 		}
 
 		this.map.addLayer(layerStyle, index);
+
+		if (deckGlService.heatmap && layerStyle.id === deckGlService.heatmap.id) {
+			this.map.setLayoutProperty(layerStyle.id, 'visibility', 'none');
+		}
 	},
 
 	displayHeatmap() {
-		const i = layers.state.layers.findIndex(obj => obj.class === 'satellite');
+		const i = layers.state.layers.findIndex(
+			obj => obj.class === mapStyles.state.mapStyles.satellite.name,
+		);
 
-		deckGlService.setHeatmapActive();
-
-		if (deckGlService.heatmap.props.active) {
+		if (heatmap.state.heatmap.active) {
 			this.map.bearing = mapSettings.state.mapSettings.bearing;
 			this.map.center = mapSettings.state.mapSettings.center;
 			this.map.pitch = mapSettings.state.mapSettings.pitch;
@@ -147,11 +147,11 @@ export default {
 				this.addHillShading();
 			}
 
-			this.addLayerStyle(deckGlService.heatmap);
+			deckGlService.addHeatmap();
 
-			if (!deckGlService.heatmap.props.active) {
+			heatmap.state.heatmap.active ?
+				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'visible') :
 				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'none');
-			}
 
 			layerStyles.state.layerStyles.map((layerStyle) => {
 				this.addLayerStyle(layerStyle);

@@ -17,14 +17,14 @@ export default {
 	setLayer(layer, i) {
 		switch (layer) {
 		case 'satellite':
-			/* hide active markers when changing map styles for aesthetic purposes */
-			markerDisplayService.hideMarkers();
-
 			/* toggle between 'outdoors' and 'satellite' map styles (basemaps) */
 			mapService.setMapStyle();
 
+			/* hide active markers when changing map styles for aesthetic purposes */
+			markerDisplayService.hideMarkers();
+
 			/* show active markers after changing map styles for aesthetic purposes */
-			setTimeout(() => markerDisplayService.showMarkers(), 1200);
+			setTimeout(() => markerDisplayService.showMarkers(), 1500);
 			break;
 
 		case 'biosphere':
@@ -51,6 +51,7 @@ export default {
 
 		case 'heatmap':
 			/* show or hide deck.gl 'HexagonLayer' heatmap layer */
+			events.heatmap.setHeatmapActive.emit('setHeatmapActive');
 			mapService.displayHeatmap();
 			break;
 

@@ -3,7 +3,7 @@ import events from '../events';
 
 export default {
 	getData() {
-		deckGlService.setHeatmap();
+		deckGlService.loadHeatmap();
 		events.trails.getTrails.emit('getTrails');
 		events.markers.getMarkers.emit('getMarkers');
 		events.layerStyles.getLayerStyles.emit('getLayerStyles');

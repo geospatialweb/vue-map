@@ -23,8 +23,8 @@ const getters = {
 const splashScreenModule = {
 	namespaced: true,
 	state,
-	actions,
 	mutations,
+	actions,
 	getters,
 };
 

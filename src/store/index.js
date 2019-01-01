@@ -1,5 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
+import heatmap from './modules/heatmap';
 import layers from './modules/layers';
 import layerStyles from './modules/layerStyles';
 import mapSettings from './modules/mapSettings';
@@ -12,6 +13,7 @@ Vue.use(Vuex);
 
 export default new Vuex.Store({
 	modules: {
+		heatmap,
 		layerStyles,
 		layers,
 		mapSettings,

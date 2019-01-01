@@ -17,6 +17,7 @@ export default {
 		Map,
 	},
 	created() {
+		events.heatmap.setHeatmapActive.on('setHeatmapActive', () => this.$store.dispatch('heatmap/setHeatmapActive'));
 		events.layerStyles.getLayerStyles.on('getLayerStyles', () => this.$store.dispatch('layerStyles/getLayerStyles'));
 		events.layerStyles.setLayerStyleActive.on('setLayerStyleActive', name => this.$store.dispatch('layerStyles/setLayerStyleActive', name));
 		events.layers.setLayerActive.on('setLayerActive', i => this.$store.dispatch('layers/setLayerActive', i));

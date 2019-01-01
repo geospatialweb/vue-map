@@ -1,12 +1,15 @@
 import EventEmitter from 'events';
 
 export default {
+	heatmap: {
+		setHeatmapActive: new EventEmitter(),
+	},
 	layers: {
-		addLayerStyle: new EventEmitter(),
 		selectLayer: new EventEmitter(),
 		setLayerActive: new EventEmitter(),
 	},
 	layerStyles: {
+		addLayerStyle: new EventEmitter(),
 		getLayerStyles: new EventEmitter(),
 		setLayerStyleActive: new EventEmitter(),
 	},

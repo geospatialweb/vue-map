@@ -23,8 +23,8 @@ const actions = {
 const MapModule = {
 	namespaced: true,
 	state,
-	actions,
 	mutations,
+	actions,
 };
 
 export default MapModule;

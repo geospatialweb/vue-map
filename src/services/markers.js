@@ -17,18 +17,18 @@ export default {
 			});
 
 			el.active = marker.active;
-			el.className = `${marker.name}-marker`;
+			el.className = `${marker.id}-marker`;
 			el.addEventListener('mouseleave', () => {
 				popup.remove();
 			});
 
-			switch (marker.name) {
+			switch (marker.id) {
 			case 'office':
 			case 'places':
 				el.addEventListener('mouseenter', () => {
 					popup
 						.setLngLat(feature.geometry.coordinates)
-						.setHTML(`<b>${feature.properties.name}</b><br>${feature.properties.description}`)
+						.setHTML(`<b>${feature.properties.id}</b><br>${feature.properties.description}`)
 						.addTo(mapService.map);
 				});
 
@@ -42,7 +42,7 @@ export default {
 				el.addEventListener('mouseenter', () => {
 					popup
 						.setLngLat([feature.properties.lng, feature.properties.lat])
-						.setHTML(`<b>${feature.properties.name}</b><br>${feature.properties.description}`)
+						.setHTML(`<b>${feature.properties.id}</b><br>${feature.properties.description}`)
 						.addTo(mapService.map);
 				});
 
