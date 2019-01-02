@@ -1,2 +1,6 @@
+.git*
 .vscode
+docker-compose.yml
 node_modules
+yarn.lock
+vue.config.js

@@ -9,6 +9,7 @@ import layersService from './layers';
 import layerStyles from '../store/modules/layerStyles';
 import mapSettings from '../store/modules/mapSettings';
 import mapStyles from '../store/modules/mapStyles';
+import markerDisplayService from './markerDisplay';
 import markers from '../store/modules/markers';
 import splashScreen from '../store/modules/splashScreen';
 
@@ -96,14 +97,43 @@ export default {
 		} else {
 			this.map.setBearing(this.map.bearing);
 			this.map.setCenter(this.map.center);
+			this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'none');
 			this.map.setPitch(this.map.pitch);
 			this.map.setZoom(this.map.zoom);
+
+			layerStyles.state.layerStyles.map((layerStyle) => {
+				if (layerStyle.layout.visibility === 'visible') {
+					this.map.setLayoutProperty(layerStyle.id, 'visibility', 'none');
+				}
+
+				return true;
+			});
 
 			if (this.mapStyle.name !== this.map.mapStyle.name) {
 				events.layers.setLayerActive.emit('setLayerActive', i);
 				layersService.setLayer(layers.state.layers[i].class, i);
-			} else {
-				this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'none');
+			} else if (this.map.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
+				markerDisplayService.hideMarkers();
+
+				setTimeout(() => {
+					layerStyles.state.layerStyles.map((layerStyle) => {
+						if (layerStyle.layout.visibility === 'visible') {
+							this.map.setLayoutProperty(layerStyle.id, 'visibility', 'visible');
+						}
+
+						return true;
+					});
+
+					markerDisplayService.showMarkers();
+				}, 1250);
+			} else if (this.map.mapStyle.name === mapStyles.state.mapStyles.satellite.name) {
+				layerStyles.state.layerStyles.map((layerStyle) => {
+					if (layerStyle.layout.visibility === 'visible') {
+						this.map.setLayoutProperty(layerStyle.id, 'visibility', 'visible');
+					}
+
+					return true;
+				});
 			}
 		}
 	},
@@ -148,13 +178,17 @@ export default {
 
 		this.map.setStyle(this.mapStyle.url);
 
-		/* add hillshading and layer styles after 1 sec delay to set map style */
+		/* add hillshading, layer styles and active markers after 1.25 sec delay to set map style */
 		setTimeout(() => {
 			if (this.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
 				this.addHillShading();
 			}
 
 			heatmapService.addHeatmap();
+
+			if (!heatmap.state.heatmap.active) {
+				this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'none');
+			}
 
 			layerStyles.state.layerStyles.map((layerStyle) => {
 				this.addLayerStyle(layerStyle);
@@ -165,6 +199,8 @@ export default {
 
 				return true;
 			});
-		}, 1000);
+
+			markerDisplayService.showMarkers();
+		}, 1250);
 	},
 };

@@ -1,5 +1,5 @@
 import events from '../events';
-import map from './map';
+import mapService from './map';
 import markers from '../store/modules/markers';
 
 export default {
@@ -7,7 +7,7 @@ export default {
 		markers.state.markers[markers.state.markersHash[layer]]
 			.map((marker) => {
 				events.markers.setMarkerActive.emit('setMarkerActive', marker);
-				marker.addTo(map.map);
+				marker.addTo(mapService.map);
 				return true;
 			});
 	},
