@@ -6,8 +6,8 @@ import trailsService from './trails';
 
 export default {
 	setEvents() {
-		events.layerStyles.addLayerStyle.on('addLayerStyle', layerStyle => mapService.addLayerStyle(layerStyle));
 		events.layers.selectLayer.on('selectLayer', event => layersService.selectLayer(event));
+		events.layerStyles.addLayerStyle.on('addLayerStyle', layerStyle => mapService.addLayerStyle(layerStyle));
 		events.map.loadMap.on('loadMap', () => mapService.loadMap());
 		events.mapSettings.mapSettings.on('mapSettings', (mapSettings) => {
 			mapService.mapSettings = mapSettings;

@@ -1,7 +1,7 @@
 <template>
 	<div :class='[heatmap.class, {active: heatmap.active}]'>
 		<div>
-			<label>Coverage</label>
+			<label>Heatmap Coverage</label>
 			<input id="coverage" type="range" min="0" max="1" step="0.1" value="1" />
 			<span id="coverage-value"></span>
 		</div>

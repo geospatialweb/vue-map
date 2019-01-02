@@ -18,9 +18,9 @@ export default {
 	},
 	created() {
 		events.heatmap.setHeatmapActive.on('setHeatmapActive', () => this.$store.dispatch('heatmap/setHeatmapActive'));
+		events.layers.setLayerActive.on('setLayerActive', i => this.$store.dispatch('layers/setLayerActive', i));
 		events.layerStyles.getLayerStyles.on('getLayerStyles', () => this.$store.dispatch('layerStyles/getLayerStyles'));
 		events.layerStyles.setLayerStyleActive.on('setLayerStyleActive', name => this.$store.dispatch('layerStyles/setLayerStyleActive', name));
-		events.layers.setLayerActive.on('setLayerActive', i => this.$store.dispatch('layers/setLayerActive', i));
 		events.mapSettings.getMapSettings.on('getMapSettings', () => this.$store.dispatch('mapSettings/getMapSettings'));
 		events.mapSettings.setMapSettings.on('setMapSettings', mapSettings => this.$store.dispatch('mapSettings/setMapSettings', mapSettings));
 		events.mapStyles.getMapStyle.on('getMapStyle', () => this.$store.dispatch('mapStyles/getMapStyle'));

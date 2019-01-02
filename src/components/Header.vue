@@ -12,11 +12,9 @@ import config from '../config/config.json';
 
 export default {
 	name: 'Header',
-	data() {
-		return {
-			header: config.header,
-		};
-	},
+	data: () => ({
+		header: config.header,
+	}),
 };
 </script>
 

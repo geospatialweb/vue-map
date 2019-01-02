@@ -1,5 +1,5 @@
-import map from './map';
 import events from '../events';
+import map from './map';
 import markers from '../store/modules/markers';
 
 export default {

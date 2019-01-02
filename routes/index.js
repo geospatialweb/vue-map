@@ -13,7 +13,7 @@ module.exports = router.get('/', (req, res) => {
 
 	const pool = new Pool({
 		/* local instance process.env.DATABASE_URL_LOCAL */
-		connectionString: process.env.DATABASE_URL_LOCAL,
+		connectionString: process.env.DATABASE_URL,
 	})
 		.on('error', (err) => {
 			console.error('Connection Failed:\n', err);
