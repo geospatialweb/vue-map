@@ -1,12 +1,12 @@
 import mapboxgl from 'mapbox-gl';
 import config from '../config/config.json';
 import dataService from './data';
-import deckGlService from './deckgl';
 import events from '../events';
 import heatmap from '../store/modules/heatmap';
+import heatmapService from './heatmap';
+import layers from '../store/modules/layers';
 import layersService from './layers';
 import layerStyles from '../store/modules/layerStyles';
-import layers from '../store/modules/layers';
 import mapSettings from '../store/modules/mapSettings';
 import mapStyles from '../store/modules/mapStyles';
 import markers from '../store/modules/markers';
@@ -64,7 +64,8 @@ export default {
 
 		this.map.addLayer(layerStyle, index);
 
-		if (deckGlService.heatmap && layerStyle.id === deckGlService.heatmap.id) {
+		if (heatmapService.heatmap && !heatmap.state.heatmap.active &&
+				layerStyle.id === heatmapService.heatmap.id) {
 			this.map.setLayoutProperty(layerStyle.id, 'visibility', 'none');
 		}
 	},
@@ -90,7 +91,7 @@ export default {
 				events.layers.setLayerActive.emit('setLayerActive', i);
 				layersService.setLayer(layers.state.layers[i].class, i);
 			} else {
-				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'visible');
+				this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'visible');
 			}
 		} else {
 			this.map.setBearing(this.map.bearing);
@@ -102,7 +103,7 @@ export default {
 				events.layers.setLayerActive.emit('setLayerActive', i);
 				layersService.setLayer(layers.state.layers[i].class, i);
 			} else {
-				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'none');
+				this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'none');
 			}
 		}
 	},
@@ -139,6 +140,12 @@ export default {
 
 	setMapStyle() {
 		this.getMapStyle();
+
+		if (heatmap.state.heatmap.active &&
+				this.mapStyle.name === mapStyles.state.mapStyles.satellite.name) {
+			this.map.removeLayer(this.hillshade.id);
+		}
+
 		this.map.setStyle(this.mapStyle.url);
 
 		/* add hillshading and layer styles after 1 sec delay to set map style */
@@ -147,11 +154,7 @@ export default {
 				this.addHillShading();
 			}
 
-			deckGlService.addHeatmap();
-
-			heatmap.state.heatmap.active ?
-				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'visible') :
-				this.map.setLayoutProperty(deckGlService.heatmap.id, 'visibility', 'none');
+			heatmapService.addHeatmap();
 
 			layerStyles.state.layerStyles.map((layerStyle) => {
 				this.addLayerStyle(layerStyle);
