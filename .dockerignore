@@ -1,6 +1,10 @@
+.eslintrc.js
 .git*
 .vscode
+babel.config.js
 docker-compose.yml
+Dockerfile
 node_modules
-yarn.lock
+README.md
 vue.config.js
+yarn.lock
