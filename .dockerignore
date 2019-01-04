@@ -6,5 +6,4 @@ docker-compose.yml
 Dockerfile
 node_modules
 README.md
-vue.config.js
 yarn.lock
