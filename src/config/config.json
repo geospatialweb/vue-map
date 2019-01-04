@@ -11,7 +11,7 @@
 			"src": "https://github.com/geospatialweb/vue-map"
 		},
 		"title": {
-			"name" : "Node | Express | Vue | Vuex | Mapbox GL | Deck GL | PostGIS | Docker"
+			"name" : "Node | Express | Vue | Vuex | Mapbox GL | Deck.GL | PostGIS | Docker"
 		}
 	},
 	"heatmap": {
@@ -24,7 +24,7 @@
 			[254, 173, 84],
 			[209, 55, 78]
 		],
-		"coverage": 1,
+		"coverage": "1.0",
 		"data_url": "https://raw.githubusercontent.com/uber-common/deck.gl-data/master/examples/3d-heatmap/heatmap-data.csv",
 		"elevationRange": [0, 1000],
 		"elevationScale": 250,
@@ -39,14 +39,15 @@
 			"specularRatio": 0.2
 		},
 		"opacity": 1,
-		"radius": 1000,
+		"params": ["coverage", "radius", "upperPercentile"],
+		"radius": "1000",
 		"settings": {
 			"bearing": -30,
 			"center": [-2.0, 52.0],
 			"pitch": 50,
 			"zoom": 6.5
 		},
-		"upperPercentile": 100
+		"upperPercentile": "100"
 	},
 	"hillshade": {
 		"id": "hillshading",

@@ -77,6 +77,8 @@ export default {
 		);
 
 		if (heatmap.state.heatmap.active) {
+			events.trails.setTrailsDisabled.emit('setTrailsDisabled');
+
 			this.map.bearing = mapSettings.state.mapSettings.bearing;
 			this.map.center = mapSettings.state.mapSettings.center;
 			this.map.pitch = mapSettings.state.mapSettings.pitch;
@@ -95,6 +97,9 @@ export default {
 				this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'visible');
 			}
 		} else {
+			events.trails.setTrailsDisabled.emit('setTrailsDisabled');
+			heatmapService.reinitializeHeatmap();
+
 			this.map.setBearing(this.map.bearing);
 			this.map.setCenter(this.map.center);
 			this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'none');

@@ -2,7 +2,9 @@ import EventEmitter from 'events';
 
 export default {
 	heatmap: {
+		reinitializeHeatmapParams: new EventEmitter(),
 		setHeatmapActive: new EventEmitter(),
+		setHeatmapParams: new EventEmitter(),
 	},
 	layers: {
 		selectLayer: new EventEmitter(),
@@ -40,5 +42,6 @@ export default {
 		getTrails: new EventEmitter(),
 		selectTrail: new EventEmitter(),
 		setTrailActive: new EventEmitter(),
+		setTrailsDisabled: new EventEmitter(),
 	},
 };

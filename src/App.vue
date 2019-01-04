@@ -17,7 +17,9 @@ export default {
 		Map,
 	},
 	created() {
+		events.heatmap.reinitializeHeatmapParams.on('reinitializeHeatmapParams', () => this.$store.dispatch('heatmap/reinitializeHeatmapParams'));
 		events.heatmap.setHeatmapActive.on('setHeatmapActive', () => this.$store.dispatch('heatmap/setHeatmapActive'));
+		events.heatmap.setHeatmapParams.on('setHeatmapParams', (param, value) => this.$store.dispatch('heatmap/setHeatmapParams', { param, value }));
 		events.layers.setLayerActive.on('setLayerActive', i => this.$store.dispatch('layers/setLayerActive', i));
 		events.layerStyles.getLayerStyles.on('getLayerStyles', () => this.$store.dispatch('layerStyles/getLayerStyles'));
 		events.layerStyles.setLayerStyleActive.on('setLayerStyleActive', name => this.$store.dispatch('layerStyles/setLayerStyleActive', name));
@@ -30,8 +32,9 @@ export default {
 		events.markers.setMarkerActive.on('setMarkerActive', marker => this.$store.dispatch('markers/setMarkerActive', marker));
 		events.markers.setMarkerHidden.on('setMarkerHidden', markers => this.$store.dispatch('markers/setMarkerHidden', markers));
 		events.splashScreen.hideSplashScreen.on('hideSplashScreen', () => this.$store.dispatch('splashScreen/setSplashScreenActive'));
-		events.trails.setTrailActive.on('setTrailActive', i => this.$store.dispatch('trails/setTrailActive', i));
 		events.trails.getTrails.on('getTrails', () => this.$store.dispatch('trails/getTrails'));
+		events.trails.setTrailActive.on('setTrailActive', i => this.$store.dispatch('trails/setTrailActive', i));
+		events.trails.setTrailsDisabled.on('setTrailsDisabled', () => this.$store.dispatch('trails/setTrailsDisabled'));
 	},
 	mounted() {
 		/* eslint-disable-next-line global-require */

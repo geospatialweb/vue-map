@@ -1,19 +1,22 @@
 <template>
 	<div :class='[heatmap.class, {active: heatmap.active}]'>
 		<div>
-			<label>Heatmap Coverage</label>
-			<input id="coverage" type="range" min="0" max="1" step="0.1" value="1" />
-			<span id="coverage-value"></span>
+			<label>Coverage</label>
+			<input id='coverage' type='range' min='0' max='1' step='0.1'
+				:value='heatmap.coverage' />
+			<span> {{ parseFloat(heatmap.coverage).toFixed(1) }}</span>
 		</div>
-		<div>
+		<p>
 			<label>Radius</label>
-			<input id="radius" type="range" min="1000" max="5000" step="500" value="1000" />
-			<span id="radius-value"></span>
-		</div>
+			<input id='radius' type='range' min='1000' max='5000' step='500'
+				:value='heatmap.radius' />
+			<span> {{ heatmap.radius }}</span>
+		</p>
 		<div>
 			<label>Upper Percentile</label>
-			<input id="upperPercentile" type="range" min="80" max="100" step="1" value="100" />
-			<span id="upperPercentile-value"></span>
+			<input id='upperPercentile' type='range' min='80' max='100' step='1'
+				:value='heatmap.upperPercentile' />
+			<span> {{ heatmap.upperPercentile }}</span>
 		</div>
 	</div>
 </template>
@@ -39,6 +42,7 @@ export default {
 
 div.heatmap {
 	position: absolute;
+	padding: 10px 10px 10px 15px;
 	background: rgb(160,150,140);
 	border: 1px solid rgb(187,187,187);
 	@include border-radius(4px);
@@ -46,17 +50,19 @@ div.heatmap {
 	cursor: pointer;
 	font-family: 'Roboto', sans-serif;
 	font-size: 0.95em;
-	line-height: 1.5;
-	padding: 10px 10px 10px 15px;
+	visibility: hidden;
 	right: 10px;
 	top: 10px;
-	visibility: hidden;
 	width: 140px;
 
-	div label,
-	div input,
-	div span {
+	div label, p label,
+	div input, p input,
+	div span, p span {
 		cursor: pointer;
+	}
+
+	div span, p span {
+		color: #fff;
 	}
 }
 
