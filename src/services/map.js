@@ -77,6 +77,7 @@ export default {
 		);
 
 		if (heatmap.state.heatmap.active) {
+			heatmapService.reinitializeHeatmap();
 			ee.emit('setTrailsDisabled');
 
 			this.map.bearing = mapSettings.state.mapSettings.bearing;
@@ -98,7 +99,6 @@ export default {
 			}
 		} else {
 			ee.emit('setTrailsDisabled');
-			heatmapService.reinitializeHeatmap();
 
 			this.map.setBearing(this.map.bearing);
 			this.map.setCenter(this.map.center);
