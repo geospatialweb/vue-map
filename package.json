@@ -3,7 +3,7 @@
     "version": "3.0.0",
     "license": "MIT",
     "author": "John Campbell <johncampbell@geospatialweb.ca> <http://www.linkedin.com/in/geospatialweb>",
-    "description": "Node, Express, Vue, Vuex, Mapbox GL, Deck GL, PostGIS, Docker Web Mapping",
+    "description": "Node, Express, Vue, Vuex, Mapbox GL, Deck.GL, PostGIS, Docker Web Mapping",
     "private": true,
     "repository": {
         "type": "git",
@@ -16,8 +16,8 @@
         "lint": "vue-cli-service lint"
     },
     "dependencies": {
-        "@deck.gl/layers": "^6.3.2",
-        "@deck.gl/mapbox": "^6.3.2",
+        "@deck.gl/layers": "^6.3.3",
+        "@deck.gl/mapbox": "^6.3.3",
         "axios": "^0.18.0",
         "axios-observable": "^1.0.7",
         "d3": "^5.7.0",
@@ -35,11 +35,11 @@
     "devDependencies": {
         "@vue/cli-plugin-babel": "^3.2.2",
         "@vue/cli-plugin-eslint": "^3.2.2",
-        "@vue/cli-service": "^3.2.2",
+        "@vue/cli-service": "^3.2.3",
         "@vue/eslint-config-airbnb": "^4.0.0",
         "babel-eslint": "^10.0.1",
         "eslint": "^5.11.1",
-        "eslint-plugin-vue": "^5.0.0",
+        "eslint-plugin-vue": "^5.1.0",
         "node-sass": "^4.11.0",
         "sass-loader": "^7.1.0",
         "vue-template-compiler": "^2.5.21"
