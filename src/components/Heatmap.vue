@@ -55,7 +55,7 @@ div.heatmap {
 	visibility: hidden;
 	right: 10px;
 	top: 10px;
-	width: 140px;
+	width: 130px;
 
 	div input,
 	div label,
@@ -64,7 +64,7 @@ div.heatmap {
 	}
 
 	div input {
-		width: 140px;
+		width: 130px;
 	}
 
 	div label {
