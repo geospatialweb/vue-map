@@ -1,5 +1,5 @@
 <template>
-	<select class='selectTrail' @change='selectTrail'>
+	<select class='trails' :disabled='disabled' @change='selectTrail'>
 		<option v-for='trail in trails' :key='trail.name'>{{ trail.name }}</option>
 	</select>
 </template>
@@ -10,7 +10,10 @@ import { mapActions, mapGetters } from 'vuex';
 export default {
 	name: 'Trails',
 	computed: {
-		...mapGetters({ trails: 'trails/trails' }),
+		...mapGetters({
+			disabled: 'trails/disabled',
+			trails: 'trails/trails',
+		}),
 	},
 	methods: {
 		...mapActions({ selectTrail: 'trails/selectTrail' }),
@@ -19,7 +22,7 @@ export default {
 </script>
 
 <style lang='scss' scoped>
-select.selectTrail {
+select.trails {
 	position: absolute;
 	border-style: solid;
 	font-family: 'Roboto', sans-serif;
