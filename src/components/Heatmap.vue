@@ -4,19 +4,19 @@
 			<label>Coverage</label>
 			<input id='coverage' type='range' min='0' max='1' step='0.1'
 				:value='heatmap.coverage' />
-			<span> {{ parseFloat(heatmap.coverage).toFixed(1) }}</span>
+			<span>{{ parseFloat(heatmap.coverage).toFixed(1) }}</span>
 		</div>
 		<p>
 			<label>Radius</label>
 			<input id='radius' type='range' min='1000' max='5000' step='500'
 				:value='heatmap.radius' />
-			<span> {{ heatmap.radius }}</span>
+			<span>{{ heatmap.radius }}</span>
 		</p>
 		<div>
 			<label>Upper Percentile</label>
 			<input id='upperPercentile' type='range' min='80' max='100' step='1'
 				:value='heatmap.upperPercentile' />
-			<span> {{ heatmap.upperPercentile }}</span>
+			<span>{{ heatmap.upperPercentile }}</span>
 		</div>
 	</div>
 </template>
