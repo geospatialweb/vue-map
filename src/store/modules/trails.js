@@ -2,6 +2,7 @@ import config from '../../config/config.json';
 import events from '../../events';
 
 const state = {
+	disabled: false,
 	trails: [],
 	trailsHash: {},
 };
@@ -27,6 +28,10 @@ const mutations = {
 			return true;
 		});
 	},
+
+	SET_TRAILS_DISABLED(state) {
+		state.disabled = !state.disabled;
+	},
 };
 
 const actions = {
@@ -42,9 +47,14 @@ const actions = {
 	setTrailActive({ commit }, i) {
 		commit('SET_TRAIL_ACTIVE', i);
 	},
+
+	setTrailsDisabled({ commit }) {
+		commit('SET_TRAILS_DISABLED');
+	},
 };
 
 const getters = {
+	disabled: state => state.disabled,
 	trails: state => state.trails,
 };
 
