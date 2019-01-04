@@ -8,7 +8,7 @@
 <script>
 import Header from './components/Header.vue';
 import Map from './components/Map.vue';
-import events from './events';
+import ee from './events';
 
 export default {
 	name: 'App',
@@ -17,29 +17,29 @@ export default {
 		Map,
 	},
 	created() {
-		events.heatmap.reinitializeHeatmapParams.on('reinitializeHeatmapParams', () => this.$store.dispatch('heatmap/reinitializeHeatmapParams'));
-		events.heatmap.setHeatmapActive.on('setHeatmapActive', () => this.$store.dispatch('heatmap/setHeatmapActive'));
-		events.heatmap.setHeatmapParams.on('setHeatmapParams', (param, value) => this.$store.dispatch('heatmap/setHeatmapParams', { param, value }));
-		events.layers.setLayerActive.on('setLayerActive', i => this.$store.dispatch('layers/setLayerActive', i));
-		events.layerStyles.getLayerStyles.on('getLayerStyles', () => this.$store.dispatch('layerStyles/getLayerStyles'));
-		events.layerStyles.setLayerStyleActive.on('setLayerStyleActive', name => this.$store.dispatch('layerStyles/setLayerStyleActive', name));
-		events.mapSettings.getMapSettings.on('getMapSettings', () => this.$store.dispatch('mapSettings/getMapSettings'));
-		events.mapSettings.setMapSettings.on('setMapSettings', mapSettings => this.$store.dispatch('mapSettings/setMapSettings', mapSettings));
-		events.mapStyles.getMapStyle.on('getMapStyle', () => this.$store.dispatch('mapStyles/getMapStyle'));
-		events.mapStyles.setMapStyle.on('setMapStyle', name => this.$store.dispatch('mapStyles/setMapStyle', name));
-		events.markers.getMarkers.on('getMarkers', () => this.$store.dispatch('markers/getMarkers'));
-		events.markers.loadMarker.on('loadMarker', marker => this.$store.dispatch('markers/loadMarker', marker));
-		events.markers.setMarkerActive.on('setMarkerActive', marker => this.$store.dispatch('markers/setMarkerActive', marker));
-		events.markers.setMarkerHidden.on('setMarkerHidden', markers => this.$store.dispatch('markers/setMarkerHidden', markers));
-		events.splashScreen.hideSplashScreen.on('hideSplashScreen', () => this.$store.dispatch('splashScreen/setSplashScreenActive'));
-		events.trails.getTrails.on('getTrails', () => this.$store.dispatch('trails/getTrails'));
-		events.trails.setTrailActive.on('setTrailActive', i => this.$store.dispatch('trails/setTrailActive', i));
-		events.trails.setTrailsDisabled.on('setTrailsDisabled', () => this.$store.dispatch('trails/setTrailsDisabled'));
+		ee.on('reinitializeHeatmapParams', () => this.$store.dispatch('heatmap/reinitializeParams'));
+		ee.on('setHeatmapActive', () => this.$store.dispatch('heatmap/setActive'));
+		ee.on('setHeatmapParams', (param, value) => this.$store.dispatch('heatmap/setParams', { param, value }));
+		ee.on('setLayerActive', i => this.$store.dispatch('layers/setActive', i));
+		ee.on('getLayerStyles', () => this.$store.dispatch('layerStyles/getLayerStyles'));
+		ee.on('setLayerStyleActive', name => this.$store.dispatch('layerStyles/setActive', name));
+		ee.on('getMapSettings', () => this.$store.dispatch('mapSettings/getSettings'));
+		ee.on('setMapSettings', mapSettings => this.$store.dispatch('mapSettings/setSettings', mapSettings));
+		ee.on('getMapStyle', () => this.$store.dispatch('mapStyles/getStyle'));
+		ee.on('setMapStyle', name => this.$store.dispatch('mapStyles/setStyle', name));
+		ee.on('getMarkers', () => this.$store.dispatch('markers/getMarkers'));
+		ee.on('loadMarker', marker => this.$store.dispatch('markers/loadMarker', marker));
+		ee.on('setMarkerActive', marker => this.$store.dispatch('markers/setActive', marker));
+		ee.on('setMarkerHidden', markers => this.$store.dispatch('markers/setHidden', markers));
+		ee.on('hideSplashScreen', () => this.$store.dispatch('splashScreen/setActive'));
+		ee.on('getTrails', () => this.$store.dispatch('trails/getTrails'));
+		ee.on('setTrailActive', i => this.$store.dispatch('trails/setActive', i));
+		ee.on('setTrailsDisabled', () => this.$store.dispatch('trails/setDisabled'));
 	},
 	mounted() {
 		/* eslint-disable-next-line global-require */
 		require('./services/events').default.setEvents();
-		events.map.loadMap.emit('loadMap');
+		ee.emit('loadMap');
 	},
 };
 </script>

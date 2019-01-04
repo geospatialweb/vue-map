@@ -1,6 +1,6 @@
 import { Axios } from 'axios-observable';
 import config from '../../config/config.json';
-import events from '../../events';
+import ee from '../../events';
 
 const state = {
 	markers: [],
@@ -19,10 +19,10 @@ const mutations = {
 	LOAD_MARKER(state, marker) {
 		state.markers.push(marker);
 	},
-	SET_MARKER_ACTIVE(state, marker) {
+	SET_ACTIVE(state, marker) {
 		marker.active = !marker.active;
 	},
-	SET_MARKER_HIDDEN(state, marker) {
+	SET_HIDDEN(state, marker) {
 		marker.hidden = !marker.hidden;
 	},
 };
@@ -40,7 +40,7 @@ const actions = {
 			const subscription = Axios.get('/api/geojson', { params })
 				.subscribe((res) => {
 					res.data ?
-						events.markers.setMarker.emit('setMarker', markers[key], res.data) :
+						ee.emit('setMarker', markers[key], res.data) :
 						console.error('Data Error:\n', res.data);
 				},
 				(err) => {
@@ -62,12 +62,12 @@ const actions = {
 		commit('LOAD_MARKER', marker);
 	},
 
-	setMarkerActive({ commit }, marker) {
-		commit('SET_MARKER_ACTIVE', marker);
+	setActive({ commit }, marker) {
+		commit('SET_ACTIVE', marker);
 	},
 
-	setMarkerHidden({ commit }, marker) {
-		commit('SET_MARKER_HIDDEN', marker);
+	setHidden({ commit }, marker) {
+		commit('SET_HIDDEN', marker);
 	},
 };
 

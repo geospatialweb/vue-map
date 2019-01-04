@@ -1,4 +1,4 @@
-import events from '../events';
+import ee from '../events';
 import layersService from './layers';
 import mapService from './map';
 import markersService from './markers';
@@ -6,18 +6,18 @@ import trailsService from './trails';
 
 export default {
 	setEvents() {
-		events.layers.selectLayer.on('selectLayer', event => layersService.selectLayer(event));
-		events.layerStyles.addLayerStyle.on('addLayerStyle', layerStyle => mapService.addLayerStyle(layerStyle));
-		events.map.loadMap.on('loadMap', () => mapService.loadMap());
-		events.mapSettings.mapSettings.on('mapSettings', (mapSettings) => {
+		ee.on('selectLayer', event => layersService.selectLayer(event));
+		ee.on('addLayerStyle', layerStyle => mapService.addLayerStyle(layerStyle));
+		ee.on('loadMap', () => mapService.loadMap());
+		ee.on('mapSettings', (mapSettings) => {
 			mapService.mapSettings = mapSettings;
 			return true;
 		});
-		events.mapStyles.mapStyle.on('mapStyle', (mapStyle) => {
+		ee.on('mapStyle', (mapStyle) => {
 			mapService.mapStyle = mapStyle;
 			return true;
 		});
-		events.markers.setMarker.on('setMarker', (marker, data) => markersService.setMarker(marker, data));
-		events.trails.selectTrail.on('selectTrail', event => trailsService.selectTrail(event));
+		ee.on('setMarker', (marker, data) => markersService.setMarker(marker, data));
+		ee.on('selectTrail', event => trailsService.selectTrail(event));
 	},
 };

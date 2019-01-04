@@ -1,23 +1,23 @@
 import config from '../../config/config.json';
-import events from '../../events';
+import ee from '../../events';
 
 const state = {
 	layers: config.layers,
 };
 
 const mutations = {
-	SET_LAYER_ACTIVE(state, i) {
+	SET_ACTIVE(state, i) {
 		state.layers[i].active = !state.layers[i].active;
 	},
 };
 
 const actions = {
 	selectLayer(context, event) {
-		events.layers.selectLayer.emit('selectLayer', event);
+		ee.emit('selectLayer', event);
 	},
 
-	setLayerActive({ commit }, i) {
-		commit('SET_LAYER_ACTIVE', i);
+	setActive({ commit }, i) {
+		commit('SET_ACTIVE', i);
 	},
 };
 

@@ -11,28 +11,28 @@ const state = {
 };
 
 const mutations = {
-	REINITIALIZE_HEATMAP_PARAMS(state) {
+	REINITIALIZE_PARAMS(state) {
 		state.heatmap.coverage = config.heatmap.coverage;
 		state.heatmap.radius = config.heatmap.radius;
 		state.heatmap.upperPercentile = config.heatmap.upperPercentile;
 	},
-	SET_HEATMAP_ACTIVE(state) {
+	SET_ACTIVE(state) {
 		state.heatmap.active = !state.heatmap.active;
 	},
-	SET_HEATMAP_PARAMS(state, { param, value }) {
+	SET_PARAMS(state, { param, value }) {
 		state.heatmap[param] = value;
 	},
 };
 
 const actions = {
-	reinitializeHeatmapParams({ commit }) {
-		commit('REINITIALIZE_HEATMAP_PARAMS');
+	reinitializeParams({ commit }) {
+		commit('REINITIALIZE_PARAMS');
 	},
-	setHeatmapActive({ commit }) {
-		commit('SET_HEATMAP_ACTIVE');
+	setActive({ commit }) {
+		commit('SET_ACTIVE');
 	},
-	setHeatmapParams({ commit }, { param, value }) {
-		commit('SET_HEATMAP_PARAMS', { param, value });
+	setParams({ commit }, { param, value }) {
+		commit('SET_PARAMS', { param, value });
 	},
 };
 

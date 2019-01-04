@@ -1,5 +1,5 @@
 import mapboxgl from 'mapbox-gl';
-import events from '../events';
+import ee from '../events';
 import mapService from './map';
 
 export default {
@@ -58,6 +58,6 @@ export default {
 			return true;
 		});
 
-		events.markers.loadMarker.emit('loadMarker', markers);
+		ee.emit('loadMarker', markers);
 	},
 };

@@ -1,6 +1,6 @@
 import { Axios } from 'axios-observable';
 import config from '../../config/config.json';
-import events from '../../events';
+import ee from '../../events';
 
 const state = {
 	layerStyles: [],
@@ -16,9 +16,9 @@ const mutations = {
 	},
 	LOAD_LAYERSTYLE(state, layerStyle) {
 		state.layerStyles.push(layerStyle);
-		events.layerStyles.addLayerStyle.emit('addLayerStyle', layerStyle);
+		ee.emit('addLayerStyle', layerStyle);
 	},
-	SET_LAYERSTYLE_ACTIVE(state, name) {
+	SET_ACTIVE(state, name) {
 		const i = state.layerStylesHash[name];
 
 		state.layerStyles[i].active = !state.layerStyles[i].active;
@@ -64,8 +64,8 @@ const actions = {
 			return true;
 		});
 	},
-	setLayerStyleActive({ commit }, name) {
-		commit('SET_LAYERSTYLE_ACTIVE', name);
+	setActive({ commit }, name) {
+		commit('SET_ACTIVE', name);
 	},
 };
 

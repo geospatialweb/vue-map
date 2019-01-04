@@ -42,7 +42,7 @@ export default {
 
 div.heatmap {
 	position: absolute;
-	padding: 10px 10px 10px 15px;
+	padding: 10px;
 	background: rgb(160,150,140);
 	border: 1px solid rgb(187,187,187);
 	@include border-radius(4px);
@@ -53,7 +53,7 @@ div.heatmap {
 	visibility: hidden;
 	right: 10px;
 	top: 10px;
-	width: 140px;
+	width: 130px;
 
 	div label, p label,
 	div input, p input,

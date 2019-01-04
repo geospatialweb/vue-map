@@ -1,4 +1,4 @@
-import events from '../events';
+import ee from '../events';
 import layers from '../store/modules/layers';
 import mapService from './map';
 import markerDisplayService from './markerDisplay';
@@ -10,7 +10,7 @@ export default {
 		const layer = event.target.classList[0];
 		const i = layers.state.layers.findIndex(obj => obj.class === layer);
 
-		events.layers.setLayerActive.emit('setLayerActive', i);
+		ee.emit('setLayerActive', i);
 		this.setLayer(layer, i);
 	},
 
@@ -25,7 +25,7 @@ export default {
 
 		case 'biosphere':
 		case 'trails':
-			events.layerStyles.setLayerStyleActive.emit('setLayerStyleActive', layer);
+			ee.emit('setLayerStyleActive', layer);
 			mapService.setLayerStyleVisibility(i);
 
 			if (layers.state.layers[i].active && layer === 'trails') {
@@ -47,7 +47,7 @@ export default {
 
 		case 'heatmap':
 			/* display deck.gl 'HexagonLayer' heatmap layer */
-			events.heatmap.setHeatmapActive.emit('setHeatmapActive');
+			ee.emit('setHeatmapActive');
 			mapService.displayHeatmap();
 			break;
 

@@ -5,14 +5,14 @@ const state = {
 };
 
 const mutations = {
-	SET_SPLASHSCREEN_ACTIVE(state) {
+	SET_ACTIVE(state) {
 		state.splashScreen.active = !state.splashScreen.active;
 	},
 };
 
 const actions = {
-	setSplashScreenActive({ commit }) {
-		commit('SET_SPLASHSCREEN_ACTIVE');
+	setActive({ commit }) {
+		commit('SET_ACTIVE');
 	},
 };
 

@@ -1,5 +1,5 @@
 import config from '../../config/config.json';
-import events from '../../events';
+import ee from '../../events';
 
 const state = {
 	disabled: false,
@@ -19,7 +19,7 @@ const mutations = {
 	LOAD_TRAILS(state, trails) {
 		trails.map(trail => state.trails.push(trail));
 	},
-	SET_TRAIL_ACTIVE(state, idx) {
+	SET_ACTIVE(state, idx) {
 		state.trails.map((trail, i) => {
 			i === idx ?
 				state.trails[i].active = true :
@@ -29,7 +29,7 @@ const mutations = {
 		});
 	},
 
-	SET_TRAILS_DISABLED(state) {
+	SET_DISABLED(state) {
 		state.disabled = !state.disabled;
 	},
 };
@@ -41,15 +41,15 @@ const actions = {
 	},
 
 	selectTrail(context, event) {
-		events.trails.selectTrail.emit('selectTrail', event);
+		ee.emit('selectTrail', event);
 	},
 
-	setTrailActive({ commit }, i) {
-		commit('SET_TRAIL_ACTIVE', i);
+	setActive({ commit }, i) {
+		commit('SET_ACTIVE', i);
 	},
 
-	setTrailsDisabled({ commit }) {
-		commit('SET_TRAILS_DISABLED');
+	setDisabled({ commit }) {
+		commit('SET_DISABLED');
 	},
 };
 

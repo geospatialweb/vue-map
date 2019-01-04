@@ -1,4 +1,4 @@
-import events from '../events';
+import ee from '../events';
 import mapService from './map';
 import markers from '../store/modules/markers';
 
@@ -6,7 +6,7 @@ export default {
 	addMarkers(layer) {
 		markers.state.markers[markers.state.markersHash[layer]]
 			.map((marker) => {
-				events.markers.setMarkerActive.emit('setMarkerActive', marker);
+				ee.emit('setMarkerActive', marker);
 				marker.addTo(mapService.map);
 				return true;
 			});
@@ -15,7 +15,7 @@ export default {
 	removeMarkers(layer) {
 		markers.state.markers[markers.state.markersHash[layer]]
 			.map((marker) => {
-				events.markers.setMarkerActive.emit('setMarkerActive', marker);
+				ee.emit('setMarkerActive', marker);
 				marker.remove();
 				return true;
 			});
@@ -27,7 +27,7 @@ export default {
 			const el = document.querySelector(`div.${name}-marker`);
 
 			if (el) {
-				events.markers.setMarkerHidden.emit('setMarkerHidden', marker);
+				ee.emit('setMarkerHidden', marker);
 				this.removeMarkers(name);
 			}
 
@@ -40,7 +40,7 @@ export default {
 			if (marker.hidden) {
 				const name = marker[0].getElement().classList[0].replace('-marker', '');
 
-				events.markers.setMarkerHidden.emit('setMarkerHidden', marker);
+				ee.emit('setMarkerHidden', marker);
 				this.addMarkers(name);
 			}
 

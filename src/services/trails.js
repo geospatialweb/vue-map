@@ -1,4 +1,4 @@
-import events from '../events';
+import ee from '../events';
 import mapService from './map';
 import trails from '../store/modules/trails';
 
@@ -11,7 +11,7 @@ export default {
 
 		/* exclude 'Select Trail' */
 		if (i > 0) {
-			events.trails.setTrailActive.emit('setTrailActive', i);
+			ee.emit('setTrailActive', i);
 			this.setTrail(trail);
 		}
 	},

@@ -1,7 +1,7 @@
 import mapboxgl from 'mapbox-gl';
 import config from '../config/config.json';
 import dataService from './data';
-import events from '../events';
+import ee from '../events';
 import heatmap from '../store/modules/heatmap';
 import heatmapService from './heatmap';
 import layers from '../store/modules/layers';
@@ -41,7 +41,7 @@ export default {
 				if (layerStyles.state.layerStyles.length === Object.keys(this.layerStyles).length &&
 						markers.state.markers.length === Object.keys(this.markers).length &&
 						splashScreen.state.splashScreen.active) {
-					events.splashScreen.hideSplashScreen.emit('hideSplashScreen');
+					ee.emit('hideSplashScreen');
 				}
 			})
 			.on('load', () => {
@@ -77,7 +77,7 @@ export default {
 		);
 
 		if (heatmap.state.heatmap.active) {
-			events.trails.setTrailsDisabled.emit('setTrailsDisabled');
+			ee.emit('setTrailsDisabled');
 
 			this.map.bearing = mapSettings.state.mapSettings.bearing;
 			this.map.center = mapSettings.state.mapSettings.center;
@@ -91,13 +91,13 @@ export default {
 			this.map.setZoom(this.heatmap.zoom);
 
 			if (this.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
-				events.layers.setLayerActive.emit('setLayerActive', i);
+				ee.emit('setLayerActive', i);
 				layersService.setLayer(layers.state.layers[i].class, i);
 			} else {
 				this.map.setLayoutProperty(heatmapService.heatmap.id, 'visibility', 'visible');
 			}
 		} else {
-			events.trails.setTrailsDisabled.emit('setTrailsDisabled');
+			ee.emit('setTrailsDisabled');
 			heatmapService.reinitializeHeatmap();
 
 			this.map.setBearing(this.map.bearing);
@@ -115,7 +115,7 @@ export default {
 			});
 
 			if (this.mapStyle.name !== this.map.mapStyle.name) {
-				events.layers.setLayerActive.emit('setLayerActive', i);
+				ee.emit('setLayerActive', i);
 				layersService.setLayer(layers.state.layers[i].class, i);
 			} else if (this.map.mapStyle.name === mapStyles.state.mapStyles.outdoors.name) {
 				markerDisplayService.hideMarkers();
@@ -144,8 +144,8 @@ export default {
 	},
 
 	getMapStyle() {
-		events.mapStyles.setMapStyle.emit('setMapStyle', this.mapStyle.name);
-		events.mapStyles.getMapStyle.emit('getMapStyle');
+		ee.emit('setMapStyle', this.mapStyle.name);
+		ee.emit('getMapStyle');
 	},
 
 	setLayerStyleVisibility(i) {
@@ -169,7 +169,7 @@ export default {
 			settings.bounds._ne.lng !== mapSettings.state.mapSettings.bounds._ne.lng ||
 			settings.bounds._sw.lat !== mapSettings.state.mapSettings.bounds._sw.lat ||
 			settings.bounds._sw.lng !== mapSettings.state.mapSettings.bounds._sw.lng) {
-			events.mapSettings.setMapSettings.emit('setMapSettings', settings);
+			ee.emit('setMapSettings', settings);
 		}
 	},
 

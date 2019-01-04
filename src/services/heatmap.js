@@ -8,7 +8,7 @@ import * as d3 from 'd3';
 import { HexagonLayer } from '@deck.gl/layers';
 import { MapboxLayer } from '@deck.gl/mapbox';
 import config from '../config/config.json';
-import events from '../events';
+import ee from '../events';
 import mapService from './map';
 
 export default {
@@ -36,7 +36,7 @@ export default {
 			document.getElementById(param).oninput = (event) => {
 				const { value } = event.target;
 
-				events.heatmap.setHeatmapParams.emit('setHeatmapParams', param, value);
+				ee.emit('setHeatmapParams', param, value);
 				this.heatmap.setProps({ [param]: Number(value) });
 			};
 
@@ -47,7 +47,7 @@ export default {
 	},
 
 	reinitializeHeatmap() {
-		events.heatmap.reinitializeHeatmapParams.emit('reinitializeHeatmapParams');
+		ee.emit('reinitializeHeatmapParams');
 
 		this.params.map((param) => {
 			this.heatmap.setProps({ [param]: Number(config.heatmap[param]) });
