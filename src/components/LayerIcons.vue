@@ -22,22 +22,22 @@ div {
 	div.satellite-icon {
 		position: absolute;
 		cursor: pointer;
-		left: 21px;
-		top: 126px;
+		left: 22px;
+		top: 125px;
 	}
 
 	div.biosphere-icon {
 		position: absolute;
 		cursor: pointer;
-		left: 22px;
-		top: 157px;
+		left: 23px;
+		top: 158px;
 	}
 
 	div.office-icon {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
-		top: 185px;
+		top: 186px;
 	}
 
 	div.places-icon {
@@ -58,7 +58,7 @@ div {
 		position: absolute;
 		cursor: pointer;
 		left: 22px;
-		top: 276px;
+		top: 277px;
 	}
 }
 </style>

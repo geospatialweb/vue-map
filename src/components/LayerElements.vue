@@ -42,7 +42,7 @@ div ul.layers li {
 	}
 
 	div {
-		padding: 6px 0 5px 40px;
+		padding: 7px 0 6px 40px;
 		background: $primary-background-color;
 		border: 1px solid rgb(187,187,187);
 		border-bottom-width: 0;
@@ -50,6 +50,7 @@ div ul.layers li {
 		cursor: pointer;
 		font-family: 'Roboto', sans-serif;
 		font-size: 0.95em;
+		line-height: 1.1;
 		width: 85px;
 
 		&:hover {

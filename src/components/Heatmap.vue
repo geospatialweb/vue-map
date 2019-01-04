@@ -6,12 +6,14 @@
 				:value='heatmap.coverage' />
 			<span>{{ parseFloat(heatmap.coverage).toFixed(1) }}</span>
 		</div>
-		<p>
+		<br>
+		<div>
 			<label>Radius</label>
 			<input id='radius' type='range' min='1000' max='5000' step='500'
 				:value='heatmap.radius' />
 			<span>{{ heatmap.radius }}</span>
-		</p>
+		</div>
+		<br>
 		<div>
 			<label>Upper Percentile</label>
 			<input id='upperPercentile' type='range' min='80' max='100' step='1'
@@ -42,7 +44,7 @@ export default {
 
 div.heatmap {
 	position: absolute;
-	padding: 10px;
+	padding: 10px 15px;
 	background: rgb(160,150,140);
 	border: 1px solid rgb(187,187,187);
 	@include border-radius(4px);
@@ -53,16 +55,25 @@ div.heatmap {
 	visibility: hidden;
 	right: 10px;
 	top: 10px;
-	width: 130px;
+	width: 140px;
 
-	div label, p label,
-	div input, p input,
-	div span, p span {
+	div input,
+	div label,
+	div span {
 		cursor: pointer;
 	}
 
-	div span, p span {
+	div input {
+		width: 140px;
+	}
+
+	div label {
+		line-height: 1.4;
+	}
+
+	div span {
 		color: #fff;
+		line-height: 1.4;
 	}
 }
 

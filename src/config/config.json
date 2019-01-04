@@ -114,8 +114,8 @@
 			"class": "biosphere",
 			"icon": "biosphere-icon",
 			"src": "./assets/biosphere.png",
-			"height": "17",
-			"width": "17"
+			"height": "16",
+			"width": "16"
 		},
 		{
 			"name": "Office",
