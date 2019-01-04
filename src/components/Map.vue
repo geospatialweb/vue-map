@@ -17,11 +17,9 @@ import mapService from '../services/map';
 
 export default {
 	name: 'Map',
-	data() {
-		return {
-			container: mapService.mapOptions.container,
-		};
-	},
+	data: () => ({
+		container: mapService.mapOptions.container,
+	}),
 	components: {
 		Heatmap,
 		Layers,
