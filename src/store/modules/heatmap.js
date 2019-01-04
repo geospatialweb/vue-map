@@ -12,9 +12,10 @@ const state = {
 
 const mutations = {
 	REINITIALIZE_PARAMS(state) {
-		state.heatmap.coverage = config.heatmap.coverage;
-		state.heatmap.radius = config.heatmap.radius;
-		state.heatmap.upperPercentile = config.heatmap.upperPercentile;
+		config.heatmap.params.map((param) => {
+			state.heatmap[param] = Number(config.heatmap[param]);
+			return true;
+		});
 	},
 	SET_ACTIVE(state) {
 		state.heatmap.active = !state.heatmap.active;
