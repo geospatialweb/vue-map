@@ -657,10 +657,10 @@
     lodash "^4.17.10"
     to-fast-properties "^2.0.0"
 
-"@deck.gl/core@^6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-6.3.2.tgz#1553fe18f8c5a02f73d8a60244048b464c4d2638"
-  integrity sha512-YqrpHnIrT1qUTyCYX8XORVdcOyXE9kq7Of9lWhqQ9DP13GyrgnUBexNqFKf5ULHTVrxxbbMI6EfaP05wx3eyrA==
+"@deck.gl/core@^6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@deck.gl/core/-/core-6.3.3.tgz#416fb380c8db1d4882ae7563a953ac71af1641a7"
+  integrity sha512-3VgaIrKzwFRL8r+EULykvWgnId0nZsv7HouMobAi6tGq4cWga2SY6AyXggySaPfFr8ZjohBKuKKOo/OwtfkbMA==
   dependencies:
     luma.gl "^6.3.0"
     math.gl "^2.2.0"
@@ -669,21 +669,21 @@
     seer "^0.2.4"
     viewport-mercator-project "^6.0.0"
 
-"@deck.gl/layers@^6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-6.3.2.tgz#ec9a78b43b56106b19673683975aa57868995e47"
-  integrity sha512-LNxZJnLDpLqwERyflYiPHrCj9Ra5+ukH15MlQYMsxuuFrdOXLGz3AAmLNZIY7dqu+DGTfDyxMU42WQV14/TOrQ==
+"@deck.gl/layers@^6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@deck.gl/layers/-/layers-6.3.3.tgz#99f92706d709381e668f2c4848de694c1938aaf0"
+  integrity sha512-C8f9xaFqQAX7UU/dnrXjwVyN04vqs1+/HcYYbmVCOVtuac8NmQWSTZrFG+p24HcyBsunf7iKoy4kw7xvBN4ySg==
   dependencies:
-    "@deck.gl/core" "^6.3.2"
+    "@deck.gl/core" "^6.3.3"
     d3-hexbin "^0.2.1"
     earcut "^2.0.6"
 
-"@deck.gl/mapbox@^6.3.2":
-  version "6.3.2"
-  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-6.3.2.tgz#e81b9d98b075dd4fd068f679f5c5df9e2320a252"
-  integrity sha512-RaOjm5aXWUnaW7XvZOTsw3/5C8TcndvjRu9di2ib6wVMhODGOiS0AnbJZ0vDVIE1ifanXUsy7ekwrjXqK2QzCg==
+"@deck.gl/mapbox@^6.3.3":
+  version "6.3.3"
+  resolved "https://registry.yarnpkg.com/@deck.gl/mapbox/-/mapbox-6.3.3.tgz#2a9d0e9ef8e62641e4773fb3e9e40c07d40b7bf4"
+  integrity sha512-OMpyxykel6BDI4HOYx8nZRZcUAgqLaBOSDs/vadgppgZWXFZpojZcWh3sra75gHWMiq6TC+c6B0+C1XC0O5e5Q==
   dependencies:
-    "@deck.gl/core" "^6.3.2"
+    "@deck.gl/core" "^6.3.3"
 
 "@intervolga/optimize-cssnano-plugin@^1.0.5":
   version "1.0.6"
@@ -805,10 +805,10 @@
     eslint-plugin-vue "^4.7.1"
     globby "^8.0.1"
 
-"@vue/cli-service@^3.2.2":
-  version "3.2.2"
-  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-3.2.2.tgz#ce2d9df019eb4e0b871ee0dda21d3fd121683bbb"
-  integrity sha512-fk5DE/9HFWPfuOT0nLiidaIpJsf3GRwQtv+aNTnYiA7TIOEvbrDeQZyBlgzAFqruyaTobfy6EKl0pQM6BSlaMQ==
+"@vue/cli-service@^3.2.3":
+  version "3.2.3"
+  resolved "https://registry.yarnpkg.com/@vue/cli-service/-/cli-service-3.2.3.tgz#cdc18d8d181c1202dc4825be51be64f043a31be3"
+  integrity sha512-lRCwf8R/YCo67SAqt1MiYhJnvybedQJz1O3uWSJzv7mDPwRUp2980gzQ3wfsTt0tkUtxRcAOmD+V1co4tWOgrw==
   dependencies:
     "@intervolga/optimize-cssnano-plugin" "^1.0.5"
     "@vue/cli-overlay" "^3.2.0"
@@ -3368,10 +3368,10 @@ eslint-plugin-vue@^4.7.1:
   dependencies:
     vue-eslint-parser "^2.0.3"
 
-eslint-plugin-vue@^5.0.0:
-  version "5.0.0"
-  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-5.0.0.tgz#4a2cc1c0e71ea45e1bd9c1a60f925bfe68bb5710"
-  integrity sha512-mSv2Ebz3RaPP+XJO/mu7F+SdR9lrMyGISSExnarLFqqf3pF5wTmwWNrhHW1o9zKzKI811UVTIIkWJJvgO6SsUQ==
+eslint-plugin-vue@^5.1.0:
+  version "5.1.0"
+  resolved "https://registry.yarnpkg.com/eslint-plugin-vue/-/eslint-plugin-vue-5.1.0.tgz#d0d373334be8140d698ec4e1fb83f09faa48081b"
+  integrity sha512-C7avvbGLb9J1PyGiFolPcGR4ljUc+dKm5ZJdrUKXwXFxHHx4SqOmRI29AsFyW7PbCGcnOvIlaq7NJS6HDIak+g==
   dependencies:
     vue-eslint-parser "^4.0.2"
 
